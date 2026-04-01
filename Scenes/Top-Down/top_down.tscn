@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://b2hw4uqh5ew1x"]
+
+[ext_resource type="PackedScene" uid="uid://lw3e7bnqbfml" path="res://Scenes/Top-Down/top_down_player.tscn" id="1_834ci"]
+[ext_resource type="Script" uid="uid://dk63mncyu88no" path="res://Scripts/top_down.gd" id="1_e8vay"]
+[ext_resource type="Texture2D" uid="uid://b0nkgb0coyr6k" path="res://Sprites/backround.png" id="2_e8vay"]
+[ext_resource type="PackedScene" uid="uid://0ht65qc6dowt" path="res://Scenes/Top-Down/buggy.tscn" id="3_e8vay"]
+[ext_resource type="FontFile" uid="uid://bxwh85p56ogo1" path="res://Scripts/Jersey10-Regular.ttf" id="4_3jmnb"]
+[ext_resource type="Texture2D" uid="uid://cu838eplo51gj" path="res://Sprites/Heart.png" id="5_qonyr"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3jmnb"]
+data = PackedVector3Array(500, 0, 500, -500, 0, 500, 500, 0, -500, -500, 0, 500, -500, 0, -500, 500, 0, -500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0md6s"]
+albedo_texture = ExtResource("2_e8vay")
+uv1_scale = Vector3(40, 40, 40)
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qonyr"]
+material = SubResource("StandardMaterial3D_0md6s")
+size = Vector2(1000, 1000)
+
+[sub_resource type="Environment" id="Environment_834ci"]
+background_mode = 1
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+reflected_light_source = 1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+volumetric_fog_albedo = Color(0.3854925, 0.38549247, 0.38549247, 1)
+
+[sub_resource type="Shader" id="Shader_834ci"]
+code = "shader_type canvas_item;
+
+uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
+uniform float pixel_size = 4;
+
+void fragment() {
+	vec2 screen_size = 1.0 / SCREEN_PIXEL_SIZE;
+	vec2 pixel_grid = screen_size / pixel_size;
+	vec2 snapped_uv = floor(SCREEN_UV * pixel_grid) / pixel_grid;
+	
+	COLOR = texture(screen_texture, snapped_uv);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jmnb"]
+shader = SubResource("Shader_834ci")
+shader_parameter/pixel_size = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0md6s"]
+bg_color = Color(0, 0, 0, 0.3372549)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.54509807)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qonyr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjood"]
+atlas = ExtResource("5_qonyr")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1u87"]
+atlas = ExtResource("5_qonyr")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7q2vu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjood")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1u87")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}]
+
+[node name="Top Down" type="Node3D" unique_id=1000467950]
+script = ExtResource("1_e8vay")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=843350149]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 15, 0)
+current = true
+
+[node name="Top Down Player" parent="." unique_id=1556868357 instance=ExtResource("1_834ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5000005, 0)
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=544541657]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1668785314]
+shape = SubResource("ConcavePolygonShape3D_3jmnb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1715174774]
+mesh = SubResource("PlaneMesh_qonyr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1316094659]
+environment = SubResource("Environment_834ci")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=814100711]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1317349938]
+material = SubResource("ShaderMaterial_3jmnb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=29542750]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=1364403110]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_3jmnb")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_0md6s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qonyr")
+
+[node name="Control" type="Control" parent="UI" unique_id=1348587287]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Heart1" type="AnimatedSprite2D" parent="UI/Control" unique_id=544372794]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7q2vu")
+animation = &"broken"
+centered = false
+
+[node name="Heart2" type="AnimatedSprite2D" parent="UI/Control" unique_id=1222621330]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7q2vu")
+animation = &"broken"
+centered = false
+offset = Vector2(75, 0)
+
+[node name="Heart3" type="AnimatedSprite2D" parent="UI/Control" unique_id=489957671]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7q2vu")
+animation = &"broken"
+centered = false
+offset = Vector2(150, 0)
+
+[node name="Buggy" parent="." unique_id=708362572 instance=ExtResource("3_e8vay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.998481, 1.9073486e-06, -31.623669)

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dam46qxut62pg"]
+
+[ext_resource type="PackedScene" uid="uid://ckiymfc31bfhh" path="res://Scenes/Rhythm/bg.tscn" id="1_xuvx5"]
+[ext_resource type="Texture2D" uid="uid://c33hxklysspuf" path="res://Sprites/the_line_2.0-sheet.png" id="2_t661f"]
+[ext_resource type="PackedScene" uid="uid://qnitmplocsnf" path="res://Scenes/Rhythm/buttons.tscn" id="3_kc7x3"]
+[ext_resource type="AudioStream" uid="uid://dmax3hb80oh42" path="res://Sounds/Music/Race me (2).mp3" id="4_t661f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjvhh"]
+atlas = ExtResource("2_t661f")
+region = Rect2(0, 0, 1072, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivnrl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjvhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="race_me_song" type="Node2D" unique_id=924209593]
+
+[node name="bg" parent="." unique_id=685328677 instance=ExtResource("1_xuvx5")]
+position = Vector2(-913, -515)
+
+[node name="horizontal_line" type="AnimatedSprite2D" parent="." unique_id=727406573]
+texture_filter = 1
+position = Vector2(0.333313, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ivnrl")
+
+[node name="vertical_line" type="AnimatedSprite2D" parent="." unique_id=643178623]
+texture_filter = 1
+position = Vector2(0.333313, 0)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ivnrl")
+
+[node name="Buttons" parent="." unique_id=659428978 instance=ExtResource("3_kc7x3")]
+
+[node name="song1" type="AudioStreamPlayer2D" parent="." unique_id=214911999]
+position = Vector2(-10, 0)
+stream = ExtResource("4_t661f")
+
+[node name="song_start_delay" type="Timer" parent="." unique_id=1356026756]
+wait_time = 3.214
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="song_start_delay" to="." method="_on_song_start_delay_timeout"]

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://x4d7uq8k1i3j"]
+
+[ext_resource type="Script" uid="uid://dey1dibt35icv" path="res://Scripts/credits.gd" id="1_gryuy"]
+[ext_resource type="FontFile" uid="uid://bxwh85p56ogo1" path="res://Scripts/Jersey10-Regular.ttf" id="1_r18jl"]
+[ext_resource type="AudioStream" uid="uid://b11pgkf55q5s8" path="res://Sounds/Music/Credits.mp3" id="3_ccovl"]
+
+[node name="Credits" type="CanvasLayer" unique_id=2082008957]
+script = ExtResource("1_gryuy")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=193454361]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00020240899, 0, 0.03749397, 1)
+
+[node name="Label" type="Label" parent="." unique_id=2035541480]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -501.64502
+offset_right = 498.35498
+offset_bottom = 2619.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_r18jl")
+theme_override_font_sizes/font_size = 60
+text = "CREDITS:
+
+(Hold Space to scroll faster)
+
+Music:
+\"Candy\" by MXSounds
+\"Race Me\" by MXSounds
+\"Barry Kool's Theme\" by SNvChipehs
+\"Jump Land\"  by MXSounds
+\"Welcome to my Wonderland\" by SNvChipehs
+\"Pandemonium\" by Hanktastic
+\"Credits\" by Voytek_Music
+
+Sprites:
+Explosion GIF - Tenor
+2D Run Animation - Lonk
+Other - Hanktastic, Osmoonpie
+
+Thanks so much to our amazing music team
+who agreed to make our music for free:
+MXSounds, SNvChipehs, & Voytek_Music
+
+Roles:
+Lead Artist - Osmoonpie
+Lead Developer - Hanktastic
+Lead Composer - MXSounds
+Lead Programmer - Hanktastic
+Lead Level Design - Lonk
+Lead Game Design - Osmoonpie
+Lead Modeler - Hanktastic
+
+Special shoutout to Sul_Monster for 
+demotivation, claims it was to \"motivate us\"
+
+Extra special shoutout to Spisekage for
+demanding to be in the credits 
+( did absolutley nothing to help )
+
+Thank you for playing!"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1762249615]
+stream = ExtResource("3_ccovl")
+volume_db = -20.0
+autoplay = true

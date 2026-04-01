@@ -1,0 +1,426 @@
+[gd_scene format=3 uid="uid://dc4hf8d6hc5mg"]
+
+[ext_resource type="Script" uid="uid://c2urwddx2hmaq" path="res://Scripts/3d_platformer_3.gd" id="1_gdiev"]
+[ext_resource type="PackedScene" uid="uid://dk3e775p64kft" path="res://Scenes/3D Platformer/3d_player.tscn" id="2_0vo48"]
+[ext_resource type="MeshLibrary" uid="uid://biur2ifnxnmwv" path="res://Models/Tiles/Grass.meshlib" id="3_22iqj"]
+[ext_resource type="Shader" uid="uid://shw172egte78" path="res://Scripts/pixelate.gdshader" id="4_gdiev"]
+[ext_resource type="PackedScene" uid="uid://cygdwo81xu4a6" path="res://Scenes/3D Platformer/3d_spike.tscn" id="5_0vo48"]
+[ext_resource type="PackedScene" uid="uid://knxvown7hrt7" path="res://Scenes/3D Platformer/3d_sproing.tscn" id="6_22iqj"]
+[ext_resource type="PackedScene" uid="uid://cbwg8hi62h37h" path="res://Scenes/3D Platformer/flag.tscn" id="7_gdiev"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l13wq"]
+friction = 0.05
+rough = true
+bounce = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfqfr"]
+shader = ExtResource("4_gdiev")
+shader_parameter/pixel_size = 8.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_22iqj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qfqfr"]
+sky_top_color = Color(0, 0.22745098, 0.72156864, 1)
+sky_horizon_color = Color(0.30980393, 0.5294118, 1, 1)
+ground_bottom_color = Color(0, 0.22745098, 0.72156864, 1)
+ground_horizon_color = Color(0.30980393, 0.5294118, 1, 1)
+ground_curve = 0.101964906
+
+[sub_resource type="Sky" id="Sky_jjwup"]
+sky_material = SubResource("ProceduralSkyMaterial_qfqfr")
+
+[sub_resource type="Environment" id="Environment_qfqfr"]
+background_mode = 2
+sky = SubResource("Sky_jjwup")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.6
+tonemap_mode = 2
+
+[node name="3d Platformer 3" type="Node3D" unique_id=1159698203]
+script = ExtResource("1_gdiev")
+
+[node name="3d_player" parent="." unique_id=1604952341 instance=ExtResource("2_0vo48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.728182, 4.5, 7.4230595)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1265910412]
+mesh_library = ExtResource("3_22iqj")
+physics_material = SubResource("PhysicsMaterial_l13wq")
+cell_center_y = false
+cell_scale = 2.0
+data = {
+"cells": PackedInt32Array(131079, 10, 1, 131079, 11, 1, 131079, 12, 1, 131080, 10, 1, 131080, 11, 1, 131080, 12, 1, 131081, 10, 1, 131081, 11, 1, 131081, 12, 1, 196615, 10, 1048579, 196615, 11, 1048578, 196615, 12, 655363, 196616, 10, 2, 196616, 11, 0, 196616, 12, 655362, 196617, 10, 3, 196617, 11, 1441794, 196617, 12, 1441795, 327689, 65534, 0, 327689, 65535, 1048578, 327689, 0, 1048578, 327689, 1, 1048578, 327689, 2, 1048578, 327689, 3, 1048578, 327689, 4, 1048578, 327689, 5, 655363, 327690, 65534, 0, 327690, 65535, 0, 327690, 0, 0, 327690, 1, 0, 327690, 2, 0, 327690, 3, 0, 327690, 4, 0, 327690, 5, 655362, 327691, 65534, 1441794, 327691, 65535, 1441794, 327691, 0, 1441794, 327691, 1, 1441794, 327691, 2, 1441794, 327691, 3, 1441794, 327691, 4, 1441794, 327691, 5, 1441795, 393214, 65532, 1048579, 393214, 65533, 1048578, 393214, 65534, 655363, 393215, 65532, 2, 393215, 65533, 0, 393215, 65534, 655362, 327680, 65532, 2, 327680, 65533, 0, 327680, 65534, 655362, 327681, 65532, 2, 327681, 65533, 0, 327681, 65534, 655362, 327682, 65532, 2, 327682, 65533, 655362, 327682, 65534, 655362, 327683, 65532, 2, 327683, 65533, 655362, 327683, 65534, 655362, 327684, 65532, 2, 327684, 65533, 655362, 327684, 65534, 655362, 327685, 65532, 2, 327685, 65533, 655362, 327685, 65534, 655362, 327686, 65532, 2, 327686, 65533, 0, 327686, 65534, 655362, 327687, 65532, 2, 327687, 65533, 0, 327687, 65534, 655362, 327688, 65532, 2, 327688, 65533, 2, 327688, 65534, 655362, 327689, 65532, 2, 327689, 65533, 0, 327690, 65532, 2, 327690, 65533, 0, 327691, 65532, 3, 327691, 65533, 1441794, 262153, 65532, 1, 262153, 65533, 1, 262153, 65534, 1, 262153, 65535, 1, 262153, 0, 1, 262153, 1, 1, 262153, 2, 1, 262153, 3, 1, 262153, 4, 1, 262153, 5, 1, 262154, 65532, 1, 262154, 65533, 1, 262154, 65534, 1, 262154, 65535, 1, 262154, 0, 1, 262154, 1, 1, 262154, 2, 1, 262154, 3, 1, 262154, 4, 1, 262154, 5, 1, 262155, 65532, 1, 262155, 65533, 1, 262155, 65534, 1, 262155, 65535, 1, 262155, 0, 1, 262155, 1, 1, 262155, 2, 1, 262155, 3, 1, 262155, 4, 1, 262155, 5, 1, 327678, 65532, 1, 327678, 65533, 1, 327678, 65534, 1, 327679, 65532, 1, 327679, 65533, 1, 327679, 65534, 1, 262144, 65532, 1, 262144, 65533, 1, 262144, 65534, 1, 262145, 65532, 1, 262145, 65533, 1, 262145, 65534, 1, 262146, 65532, 1, 262146, 65533, 1, 262146, 65534, 1, 262147, 65532, 1, 262147, 65533, 1, 262147, 65534, 1, 262148, 65532, 1, 262148, 65533, 1, 262148, 65534, 1, 262149, 65532, 1, 262149, 65533, 1, 262149, 65534, 1, 262150, 65532, 1, 262150, 65533, 1, 262150, 65534, 1, 262151, 65532, 1, 262151, 65533, 1, 262151, 65534, 1, 262152, 65532, 1, 262152, 65533, 1, 262152, 65534, 1, 458745, 1, 1, 458745, 2, 1, 458745, 3, 1, 458746, 1, 1, 458746, 2, 1, 458746, 3, 1, 458747, 1, 1, 458747, 2, 1, 458747, 3, 1, 524281, 1, 1048579, 524281, 2, 1048578, 524281, 3, 655363, 524282, 1, 2, 524282, 2, 0, 524282, 3, 655362, 524283, 1, 3, 524283, 2, 1441794, 524283, 3, 1441795, 524289, 1, 1, 524289, 2, 1, 524290, 1, 1, 524290, 2, 1, 589825, 1, 1048579, 589825, 2, 655363, 589826, 1, 3, 589826, 2, 1441795, 655367, 65534, 1, 655367, 65535, 1, 655368, 65534, 1, 655368, 65535, 1, 720903, 65534, 1048579, 720903, 65535, 655363, 720904, 65534, 3, 720904, 65535, 655362, 589838, 65531, 1, 589838, 65532, 1, 589839, 65531, 1, 589839, 65532, 1, 655374, 65531, 1048579, 655374, 65532, 655363, 655375, 65531, 3, 655375, 65532, 1441795, 655365, 65524, 1, 655365, 65525, 1, 655365, 65526, 1, 655366, 65524, 1, 655366, 65525, 1, 655366, 65526, 1, 655367, 65524, 1, 655367, 65525, 1, 655367, 65526, 1, 720901, 65524, 2, 720901, 65525, 0, 720901, 65526, 655362, 720902, 65524, 2, 720902, 65525, 0, 720902, 65526, 655362, 720903, 65524, 3, 720903, 65525, 1441794, 720903, 65526, 1441795, 851971, 65529, 1, 851971, 65530, 1, 851972, 65529, 1, 851972, 65530, 1, 851973, 65529, 1, 851973, 65530, 1, 851974, 65529, 1, 851974, 65530, 1, 851975, 65529, 1, 851975, 65530, 1, 851976, 65529, 1, 851976, 65530, 1, 917507, 65529, 1048579, 917507, 65530, 655363, 917508, 65529, 2, 917508, 65530, 655362, 917509, 65529, 2, 917509, 65530, 655362, 917510, 65529, 2, 917510, 65530, 655362, 917511, 65529, 2, 917511, 65530, 655362, 917512, 65529, 3, 917512, 65530, 1441795, 786434, 65524, 1048579, 786434, 65525, 1048578, 786434, 65526, 655363, 786435, 65524, 2, 786435, 65525, 0, 786435, 65526, 655362, 786436, 65524, 3, 786436, 65525, 1441794, 786436, 65526, 1441795, 720898, 65524, 1, 720898, 65525, 1, 720898, 65526, 1, 720899, 65524, 1, 720899, 65525, 1, 720899, 65526, 1, 720900, 65524, 1, 720900, 65525, 1, 720900, 65526, 1, 655362, 65524, 1, 655362, 65525, 1, 655362, 65526, 1, 655363, 65524, 1, 655363, 65525, 1, 655363, 65526, 1, 655364, 65524, 1, 655364, 65525, 1, 655364, 65526, 1, 589829, 65524, 1, 589829, 65525, 1, 589829, 65526, 1, 589830, 65524, 1, 589830, 65525, 1, 589830, 65526, 1, 589831, 65524, 1, 589831, 65525, 1, 589831, 65526, 1, 589826, 65524, 1, 589826, 65525, 1, 589826, 65526, 1, 589827, 65524, 1, 589827, 65525, 1, 589827, 65526, 1, 589828, 65524, 1, 589828, 65525, 1, 589828, 65526, 1, 131068, 8, 1048579, 131068, 9, 0, 131068, 10, 0, 131068, 11, 0, 131068, 12, 0, 131068, 13, 0, 131068, 14, 655363, 131069, 8, 2, 131069, 9, 0, 131069, 10, 0, 131069, 11, 0, 131069, 12, 0, 131069, 13, 0, 131069, 14, 655362, 131070, 8, 2, 131070, 9, 0, 131070, 10, 0, 131070, 11, 0, 131070, 12, 0, 131070, 13, 0, 131070, 14, 655362, 131071, 8, 2, 131071, 9, 0, 131071, 10, 0, 131071, 11, 0, 131071, 12, 0, 131071, 13, 0, 131071, 14, 655362, 65536, 8, 2, 65536, 9, 0, 65536, 10, 0, 65536, 11, 0, 65536, 12, 0, 65536, 13, 0, 65536, 14, 655362, 65537, 8, 3, 65537, 9, 1441794, 65537, 10, 1441794, 65537, 11, 1441794, 65537, 12, 1441794, 65537, 13, 1441794, 65537, 14, 1441795, 65532, 8, 1, 65532, 9, 1, 65532, 10, 1, 65532, 11, 1, 65532, 12, 1, 65532, 13, 1, 65532, 14, 1, 65533, 8, 1, 65533, 9, 1, 65533, 10, 1, 65533, 11, 1, 65533, 12, 1, 65533, 13, 1, 65533, 14, 1, 65534, 8, 1, 65534, 9, 1, 65534, 10, 1, 65534, 11, 1, 65534, 12, 1, 65534, 13, 1, 65534, 14, 1, 65535, 8, 1, 65535, 9, 1, 65535, 10, 1, 65535, 11, 1, 65535, 12, 1, 65535, 13, 1, 65535, 14, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 1, 8, 1, 1, 9, 1, 1, 10, 1, 1, 11, 1, 1, 12, 1, 1, 13, 1, 1, 14, 1, 65526, 1, 1048579, 65526, 2, 1048578, 65526, 3, 1048578, 65526, 4, 1048578, 65526, 5, 655363, 65527, 1, 2, 65527, 2, 0, 65527, 3, 0, 65527, 4, 0, 65527, 5, 655362, 65528, 1, 2, 65528, 2, 0, 65528, 3, 0, 65528, 4, 0, 65528, 5, 655362, 65529, 1, 3, 65529, 2, 1441794, 65529, 3, 1441794, 65529, 4, 1441794, 65529, 5, 1441795, 983053, 65533, 1, 983053, 65534, 1, 983054, 65533, 1, 983054, 65534, 1, 1048589, 65533, 1048579, 1048589, 65534, 655363, 1048590, 65533, 3, 1048590, 65534, 1441795, 1114114, 1, 1, 1114114, 2, 1, 1114114, 3, 1, 1114114, 4, 1, 1114114, 5, 1, 1114114, 6, 1, 1114115, 1, 1, 1114115, 2, 1, 1114115, 3, 1, 1114115, 4, 1, 1114115, 5, 1, 1114115, 6, 1, 1114116, 1, 1, 1114116, 2, 1, 1114116, 3, 1, 1114116, 4, 1, 1114116, 5, 1, 1114116, 6, 1, 1114117, 1, 1, 1114117, 2, 1, 1114117, 3, 1, 1114117, 4, 1, 1114117, 5, 1, 1114117, 6, 1, 1114118, 1, 1, 1114118, 2, 1, 1114118, 3, 1, 1114118, 4, 1, 1114118, 5, 1, 1114118, 6, 1, 1114119, 1, 1, 1114119, 2, 1, 1114119, 3, 1, 1114119, 4, 1, 1114119, 5, 1, 1114119, 6, 1, 1114120, 1, 1, 1114120, 2, 1, 1114120, 3, 1, 1114120, 4, 1, 1114120, 5, 1, 1114120, 6, 1, 1114121, 1, 1, 1114121, 2, 1, 1114121, 3, 1, 1114121, 4, 1, 1114121, 5, 1, 1114121, 6, 1, 1179650, 1, 1048579, 1179650, 2, 1048578, 1179650, 3, 1048578, 1179650, 4, 1048578, 1179650, 5, 1048578, 1179650, 6, 655363, 1179651, 1, 2, 1179651, 2, 2, 1179651, 3, 0, 1179651, 4, 0, 1179651, 5, 0, 1179651, 6, 655362, 1179652, 1, 2, 1179652, 2, 0, 1179652, 3, 0, 1179652, 4, 0, 1179652, 5, 0, 1179652, 6, 655362, 1179653, 1, 2, 1179653, 2, 0, 1179653, 3, 0, 1179653, 4, 0, 1179653, 5, 0, 1179653, 6, 655362, 1179654, 1, 2, 1179654, 2, 0, 1179654, 3, 0, 1179654, 4, 0, 1179654, 5, 0, 1179654, 6, 655362, 1179655, 1, 2, 1179655, 2, 0, 1179655, 3, 0, 1179655, 4, 0, 1179655, 5, 0, 1179655, 6, 655362, 1179656, 1, 2, 1179656, 2, 0, 1179656, 3, 0, 1179656, 4, 0, 1179656, 5, 0, 1179656, 6, 655362, 1179657, 1, 3, 1179657, 2, 1441794, 1179657, 3, 1441794, 1179657, 4, 1441794, 1179657, 5, 1441794, 1179657, 6, 1441795, 1310718, 9, 1, 1310718, 10, 1, 1310718, 11, 1, 1310718, 12, 1, 1310719, 9, 1, 1310719, 10, 1, 1310719, 11, 1, 1310719, 12, 1, 1245184, 9, 1, 1245184, 10, 1, 1245184, 11, 1, 1245184, 12, 1, 1245185, 9, 1, 1245185, 10, 1, 1245185, 11, 1, 1245185, 12, 1, 1376254, 9, 1048579, 1376254, 10, 1048578, 1376254, 11, 1048578, 1376254, 12, 655363, 1376255, 9, 2, 1376255, 10, 0, 1376255, 11, 0, 1376255, 12, 655362, 1310720, 9, 2, 1310720, 10, 0, 1310720, 11, 0, 1310720, 12, 655362, 1310721, 9, 3, 1310721, 10, 1441794, 1310721, 11, 1441794, 1310721, 12, 1441795, 1310724, 18, 1, 1310724, 19, 1, 1310725, 18, 1, 1310725, 19, 1, 1376260, 18, 1048579, 1376260, 19, 655363, 1376261, 18, 3, 1376261, 19, 1441795, 1441789, 16, 1, 1441789, 17, 1, 1441789, 18, 1, 1441790, 16, 1, 1441790, 17, 1, 1441790, 18, 1, 1441791, 16, 1, 1441791, 17, 1, 1441791, 18, 1, 1441783, 16, 1, 1441783, 17, 1, 1441783, 18, 1, 1441784, 16, 1, 1441784, 17, 1, 1441784, 18, 1, 1441785, 16, 1, 1441785, 17, 1, 1441785, 18, 1, 1441786, 16, 1, 1441786, 17, 1, 1441786, 18, 1, 1441787, 16, 1, 1441787, 17, 1, 1441787, 18, 1, 1441788, 16, 1, 1441788, 17, 1, 1441788, 18, 1, 1507319, 16, 1, 1507319, 17, 1, 1507319, 18, 1, 1507320, 16, 1, 1507320, 17, 1, 1507320, 18, 1, 1507321, 16, 1, 1507321, 17, 1, 1507321, 18, 1, 1507322, 16, 1, 1507322, 17, 1, 1507322, 18, 1, 1507323, 16, 1, 1507323, 17, 1, 1507323, 18, 1, 1507324, 16, 1, 1507324, 17, 1, 1507324, 18, 1, 1507325, 16, 1, 1507325, 17, 1, 1507325, 18, 1, 1507326, 16, 1, 1507326, 17, 1, 1507326, 18, 1, 1507327, 16, 1, 1507327, 17, 1, 1507327, 18, 1, 1572855, 16, 1048579, 1572855, 17, 1048578, 1572855, 18, 655363, 1572856, 16, 2, 1572856, 17, 0, 1572856, 18, 655362, 1572857, 16, 2, 1572857, 17, 0, 1572857, 18, 655362, 1572858, 16, 2, 1572858, 17, 0, 1572858, 18, 655362, 1572859, 16, 2, 1572859, 17, 0, 1572859, 18, 655362, 1572860, 16, 2, 1572860, 17, 0, 1572860, 18, 655362, 1572861, 16, 2, 1572861, 17, 0, 1572861, 18, 655362, 1572862, 16, 2, 1572862, 17, 0, 1572862, 18, 655362, 1572863, 16, 3, 1572863, 17, 1441794, 1572863, 18, 1441795, 1638389, 9, 1, 1638389, 10, 1, 1638389, 11, 1, 1638390, 9, 1, 1638390, 10, 1, 1638390, 11, 1, 1703925, 9, 1048579, 1703925, 10, 1048578, 1703925, 11, 655363, 1703926, 9, 3, 1703926, 10, 1441794, 1703926, 11, 1441795, 1703929, 5, 1, 1703929, 6, 1, 1703929, 7, 1, 1703930, 5, 1, 1703930, 6, 1, 1703930, 7, 1, 1703931, 5, 1, 1703931, 6, 1, 1703931, 7, 1, 1703932, 5, 1, 1703932, 6, 1, 1703932, 7, 1, 1703933, 5, 1, 1703933, 6, 1, 1703933, 7, 1, 1703934, 5, 1, 1703934, 6, 1, 1703934, 7, 1, 1769465, 5, 1048579, 1769465, 6, 1048578, 1769465, 7, 655363, 1769466, 5, 2, 1769466, 6, 0, 1769466, 7, 655362, 1769467, 5, 2, 1769467, 6, 0, 1769467, 7, 655362, 1769468, 5, 2, 1769468, 6, 0, 1769468, 7, 655362, 1769469, 5, 2, 1769469, 6, 0, 1769469, 7, 655362, 1769470, 5, 3, 1769470, 6, 1441794, 1769470, 7, 1441795, 1835007, 65534, 1, 1835007, 65535, 1, 1835007, 0, 1, 1835007, 1, 1, 1769472, 65534, 1, 1769472, 65535, 1, 1769472, 0, 1, 1769472, 1, 1, 1769473, 65534, 1, 1769473, 65535, 1, 1769473, 0, 1, 1769473, 1, 1, 1769474, 65534, 1, 1769474, 65535, 1, 1769474, 0, 1, 1769474, 1, 1, 1769475, 65534, 1, 1769475, 65535, 1, 1769475, 0, 1, 1769475, 1, 1, 1900543, 65534, 1048579, 1900543, 65535, 1048578, 1900543, 0, 1048578, 1900543, 1, 655363, 1835008, 65534, 2, 1835008, 65535, 0, 1835008, 0, 0, 1835008, 1, 655362, 1835009, 65534, 2, 1835009, 65535, 0, 1835009, 0, 0, 1835009, 1, 655362, 1835010, 65534, 2, 1835010, 65535, 0, 1835010, 0, 0, 1835010, 1, 655362, 1835011, 65534, 3, 1835011, 65535, 1441794, 1835011, 0, 1441794, 1835011, 1, 1441795, 720905, 65534, 2, 720906, 65534, 3, 720906, 65535, 1441795, 720905, 65535, 655362, 655370, 65535, 1441793, 655369, 65535, 1441793, 655369, 65534, 1441793, 655370, 65534, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, 12, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=336796754]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1275909851]
+material = SubResource("ShaderMaterial_qfqfr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Spikes" type="Node3D" parent="." unique_id=214778922]
+
+[node name="Spike" parent="Spikes" unique_id=776958481 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 4, 18)
+
+[node name="Spike2" parent="Spikes" unique_id=874668686 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 4, 20)
+
+[node name="Spike3" parent="Spikes" unique_id=928111277 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, 4, 25)
+
+[node name="Spike4" parent="Spikes" unique_id=1327509829 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 4, 17)
+
+[node name="Spike6" parent="Spikes" unique_id=1404686325 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 4, 21)
+
+[node name="Spike7" parent="Spikes" unique_id=1702440276 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 4, 23)
+
+[node name="Spike9" parent="Spikes" unique_id=1032108733 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 4, 28)
+
+[node name="Spike10" parent="Spikes" unique_id=2027251399 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 4, 27)
+
+[node name="Spike11" parent="Spikes" unique_id=939662517 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 4, 21)
+
+[node name="Spike12" parent="Spikes" unique_id=1171885279 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 4, 29)
+
+[node name="Spike13" parent="Spikes" unique_id=330204884 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 4, 29)
+
+[node name="Spike14" parent="Spikes" unique_id=423713507 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4, 29)
+
+[node name="Spike15" parent="Spikes" unique_id=730848208 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, 4, 25)
+
+[node name="Spike16" parent="Spikes" unique_id=90276609 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15, 8, 21)
+
+[node name="Spike17" parent="Spikes" unique_id=326080185 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15, 8, 25)
+
+[node name="Spike18" parent="Spikes" unique_id=1581323914 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 8, 25)
+
+[node name="Spike19" parent="Spikes" unique_id=543673490 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 8, 21)
+
+[node name="Spike20" parent="Spikes" unique_id=1338273906 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 12, 9)
+
+[node name="Spike21" parent="Spikes" unique_id=89546059 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23, 12, 9)
+
+[node name="Spike22" parent="Spikes" unique_id=1694414357 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21, 12, 7)
+
+[node name="Spike23" parent="Spikes" unique_id=781495856 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 12, 5)
+
+[node name="Spike29" parent="Spikes" unique_id=1503787961 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9, 12, -3)
+
+[node name="Spike30" parent="Spikes" unique_id=660188354 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9, 12, -7)
+
+[node name="Spike31" parent="Spikes" unique_id=1301415551 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 12, -5)
+
+[node name="Spike32" parent="Spikes" unique_id=1022617155 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11, 16, 3)
+
+[node name="Spike33" parent="Spikes" unique_id=1115099537 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9, 16, 5)
+
+[node name="Spike34" parent="Spikes" unique_id=1341173958 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11, 16, 7)
+
+[node name="Spike35" parent="Spikes" unique_id=2137594540 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13, 16, 5)
+
+[node name="Spike36" parent="Spikes" unique_id=72793218 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 20, 5)
+
+[node name="Spike37" parent="Spikes" unique_id=1952132411 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, 20, 3)
+
+[node name="Spike38" parent="Spikes" unique_id=1655388173 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15, 24, -3)
+
+[node name="Spike39" parent="Spikes" unique_id=380727018 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17, 24, -3)
+
+[node name="Spike40" parent="Spikes" unique_id=1813506811 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 31, 22, -9)
+
+[node name="Spike41" parent="Spikes" unique_id=1071478576 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 31, 22, -7)
+
+[node name="Spike42" parent="Spikes" unique_id=1507913926 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 24, -23)
+
+[node name="Spike43" parent="Spikes" unique_id=1533728016 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 24, -21)
+
+[node name="Spike44" parent="Spikes" unique_id=1809423200 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 24, -19)
+
+[node name="Spike45" parent="Spikes" unique_id=434787604 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 26, -19)
+
+[node name="Spike46" parent="Spikes" unique_id=319961114 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7, 26, -19)
+
+[node name="Spike47" parent="Spikes" unique_id=664944445 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9, 26, -19)
+
+[node name="Spike48" parent="Spikes" unique_id=560277824 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 30, -13)
+
+[node name="Spike49" parent="Spikes" unique_id=1212020534 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13, 30, -13)
+
+[node name="Spike50" parent="Spikes" unique_id=643345358 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13, 30, -11)
+
+[node name="Spike51" parent="Spikes" unique_id=685565316 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 30, -11)
+
+[node name="Spike52" parent="Spikes" unique_id=751236444 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 27, 34, -3)
+
+[node name="Spike54" parent="Spikes" unique_id=642342222 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 38, 13)
+
+[node name="Spike55" parent="Spikes" unique_id=1325169341 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 38, 3)
+
+[node name="Spike56" parent="Spikes" unique_id=775588433 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 38, 3)
+
+[node name="Spike57" parent="Spikes" unique_id=1773512709 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 38, 13)
+
+[node name="Spike58" parent="Spikes" unique_id=1730791514 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, 42, 21)
+
+[node name="Spike59" parent="Spikes" unique_id=708752219 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 42, 21)
+
+[node name="Spike60" parent="Spikes" unique_id=1845518896 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 42, 19)
+
+[node name="Spike61" parent="Spikes" unique_id=2042563632 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, 42, 25)
+
+[node name="Spike68" parent="Spikes" unique_id=1972104623 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 44, 37)
+
+[node name="Spike69" parent="Spikes" unique_id=1984259637 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 44, 39)
+
+[node name="Spike70" parent="Spikes" unique_id=1396407840 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 48, 37)
+
+[node name="Spike71" parent="Spikes" unique_id=1897684917 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 48, 35)
+
+[node name="Spike72" parent="Spikes" unique_id=1073539199 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, 48, 33)
+
+[node name="Spike73" parent="Spikes" unique_id=1138760303 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 48, 35)
+
+[node name="Spike74" parent="Spikes" unique_id=1058561875 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9, 48, 37)
+
+[node name="Spike75" parent="Spikes" unique_id=218656499 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11, 48, 35)
+
+[node name="Spike76" parent="Spikes" unique_id=853550569 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13, 48, 33)
+
+[node name="Spike77" parent="Spikes" unique_id=532380610 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -15, 48, 35)
+
+[node name="Spike78" parent="Spikes" unique_id=1104100134 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17, 48, 37)
+
+[node name="Spike79" parent="Spikes" unique_id=882346996 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -21, 52, 23)
+
+[node name="Spike80" parent="Spikes" unique_id=1306706108 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -21, 52, 21)
+
+[node name="Spike81" parent="Spikes" unique_id=1720194246 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -21, 52, 19)
+
+[node name="Spike82" parent="Spikes" unique_id=1560932092 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13, 54, 15)
+
+[node name="Spike83" parent="Spikes" unique_id=1817854172 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13, 54, 15)
+
+[node name="Spike84" parent="Spikes" unique_id=1836649177 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -13, 54, 11)
+
+[node name="Spike85" parent="Spikes" unique_id=2021835424 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 54, 11)
+
+[node name="Spike86" parent="Spikes" unique_id=42313225 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 54, 15)
+
+[node name="Spike62" parent="Spikes" unique_id=748543440 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 42, 25)
+
+[node name="Spike63" parent="Spikes" unique_id=765074757 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 42, 25)
+
+[node name="Spike64" parent="Spikes" unique_id=184414921 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 42, 25)
+
+[node name="Spike65" parent="Spikes" unique_id=982894974 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 42, 23)
+
+[node name="Spike66" parent="Spikes" unique_id=168433614 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 42, 21)
+
+[node name="Spike67" parent="Spikes" unique_id=1189249495 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3, 42, 19)
+
+[node name="Spike53" parent="Spikes" unique_id=1727795523 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 29, 34, -5)
+
+[node name="Spike24" parent="Spikes" unique_id=959575642 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23, 12, 5)
+
+[node name="Spike25" parent="Spikes" unique_id=24742371 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21, 12, 3)
+
+[node name="Spike26" parent="Spikes" unique_id=283144839 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 12, 1)
+
+[node name="Spike27" parent="Spikes" unique_id=278496431 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23, 12, 1)
+
+[node name="Spike28" parent="Spikes" unique_id=1334643537 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21, 12, -1)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=194176932]
+
+[node name="3d_sproing" parent="Enemies" unique_id=447300825 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 12, -5)
+
+[node name="3d_sproing2" parent="Enemies" unique_id=993370339 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 12, -5)
+
+[node name="3d_sproing3" parent="Enemies" unique_id=1255990423 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 12, -3)
+
+[node name="3d_sproing4" parent="Enemies" unique_id=1098103926 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 12, -5)
+
+[node name="3d_sproing20" parent="Enemies" unique_id=449002602 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 54, 12)
+
+[node name="3d_sproing21" parent="Enemies" unique_id=250736271 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 54, 12)
+
+[node name="3d_sproing22" parent="Enemies" unique_id=1745666037 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 54, 13)
+
+[node name="3d_sproing23" parent="Enemies" unique_id=1244933692 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 54, 14)
+
+[node name="3d_sproing24" parent="Enemies" unique_id=2068624924 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 54, 15)
+
+[node name="3d_sproing25" parent="Enemies" unique_id=1799409523 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 54, 11)
+
+[node name="3d_sproing5" parent="Enemies" unique_id=1249652191 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 12, -4)
+
+[node name="3d_sproing6" parent="Enemies" unique_id=123878790 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12, -6)
+
+[node name="3d_sproing7" parent="Enemies" unique_id=167977514 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 12, -6)
+
+[node name="3d_sproing8" parent="Enemies" unique_id=1568963660 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 38, 9)
+
+[node name="3d_sproing9" parent="Enemies" unique_id=421825489 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 38, 6)
+
+[node name="3d_sproing13" parent="Enemies" unique_id=519654648 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 38, 11)
+
+[node name="3d_sproing14" parent="Enemies" unique_id=882982457 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 38, 8)
+
+[node name="3d_sproing15" parent="Enemies" unique_id=1312892748 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 38, 11)
+
+[node name="3d_sproing16" parent="Enemies" unique_id=1928652828 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 38, 13)
+
+[node name="3d_sproing17" parent="Enemies" unique_id=55944513 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 38, 9)
+
+[node name="3d_sproing18" parent="Enemies" unique_id=1342622869 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 38, 5)
+
+[node name="3d_sproing19" parent="Enemies" unique_id=1319178462 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 38, 9)
+
+[node name="3d_sproing10" parent="Enemies" unique_id=1240414597 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 38, 4)
+
+[node name="3d_sproing11" parent="Enemies" unique_id=934404076 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 38, 7)
+
+[node name="3d_sproing12" parent="Enemies" unique_id=1726655359 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 38, 11)
+
+[node name="3d_sproing26" parent="Enemies" unique_id=766307334 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 24, -1)
+
+[node name="3d_sproing27" parent="Enemies" unique_id=759993374 instance=ExtResource("6_22iqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 26, -21)
+
+[node name="Dead" type="Area3D" parent="." unique_id=50064768]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dead" unique_id=1161513822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+shape = SubResource("WorldBoundaryShape3D_22iqj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=45718771]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2110880828]
+environment = SubResource("Environment_qfqfr")
+
+[node name="Spike" parent="." unique_id=1516022780 instance=ExtResource("5_0vo48")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19, 24, -3)
+
+[node name="Flag" parent="." unique_id=1497612168 instance=ExtResource("7_gdiev")]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 3, 58, 0)
+
+[connection signal="body_entered" from="Dead" to="." method="_on_dead_body_entered"]

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c66rd2gahb6j"]
+
+[ext_resource type="Texture2D" uid="uid://belxbcx4vrysn" path="res://Assets/Images/exploding_arrow_thing_up_but_barry.png" id="1_01jgs"]
+[ext_resource type="Script" uid="uid://clqno0fps35be" path="res://Scripts/notes.gd" id="2_tjuvp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_372bf"]
+atlas = ExtResource("1_01jgs")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpbco"]
+atlas = ExtResource("1_01jgs")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljuon"]
+atlas = ExtResource("1_01jgs")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv8xd"]
+atlas = ExtResource("1_01jgs")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnhp6"]
+atlas = ExtResource("1_01jgs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_372bf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_372bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpbco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljuon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv8xd")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnhp6")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjuvp"]
+radius = 49.010204
+
+[node name="Notes" type="Node2D" unique_id=1905147423]
+script = ExtResource("2_tjuvp")
+
+[node name="note_sprite" type="AnimatedSprite2D" parent="." unique_id=519065021]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_372bf")
+animation = &"normal"
+
+[node name="body" type="Area2D" parent="." unique_id=1559805622]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body" unique_id=1548651879]
+shape = SubResource("CircleShape2D_tjuvp")
+
+[connection signal="area_exited" from="body" to="." method="_on_body_area_exited"]

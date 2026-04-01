@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dk3e775p64kft"]
+
+[ext_resource type="Script" uid="uid://ux2dnr3myl0n" path="res://Scripts/character_body_3d.gd" id="1_hr86y"]
+[ext_resource type="AudioStream" uid="uid://ce5sy18btqsjt" path="res://Sounds/Music/Twink Land.mp3" id="2_kb7pv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ujhu8"]
+height = 3.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dom76"]
+height = 3.0
+
+[node name="3d_player" type="CharacterBody3D" unique_id=1604952341 groups=["Player"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_hr86y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=647214518]
+shape = SubResource("CapsuleShape3D_ujhu8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1743742237]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_dom76")
+
+[node name="Head" type="Node3D" parent="." unique_id=1818004617]
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1131450542]
+transform = Transform3D(1, 0, 0, 0, 0.9304176, 0.3665012, 0, -0.3665012, 0.9304176, 0, 1.4, 0)
+current = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=343324033]
+follow_viewport_enabled = true
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2" unique_id=463471579]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6502.0
+offset_top = -4935.0
+offset_right = 5320.0
+offset_bottom = 3521.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1246010516]
+target_position = Vector3(0, 2, 0)
+hit_from_inside = true
+debug_shape_custom_color = Color(0.25274813, 0.023147618, 0.6146804, 1)
+debug_shape_thickness = 5
+
+[node name="Dash Timer" type="Timer" parent="." unique_id=226974632]
+wait_time = 0.2
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1293369556]
+stream = ExtResource("2_kb7pv")
+volume_db = -10.0
+autoplay = true

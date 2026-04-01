@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://bdip0jlsqggi5"]
+
+[ext_resource type="Shader" uid="uid://cpj35l57dk663" path="res://Scripts/menuBG.gdshader" id="1_5wsvm"]
+[ext_resource type="Script" uid="uid://dt1u671q0tlxx" path="res://Scripts/main_menu.gd" id="1_xp0kt"]
+[ext_resource type="FontFile" uid="uid://bxwh85p56ogo1" path="res://Scripts/Jersey10-Regular.ttf" id="2_i2xx2"]
+[ext_resource type="Texture2D" uid="uid://ll4bc5k5utxt" path="res://Sprites/Barry_Kools_Awesome_Arcade.png" id="3_3h8o7"]
+[ext_resource type="Texture2D" uid="uid://drnxru4rfor6" path="res://Sprites/Options/options_button1.png" id="3_jewm6"]
+[ext_resource type="Texture2D" uid="uid://dm76q1clitast" path="res://Sprites/Options/options_button3.png" id="4_cejvf"]
+[ext_resource type="Texture2D" uid="uid://i7qtbua0s0ni" path="res://Sprites/Options/options_button2.png" id="5_ru8vt"]
+[ext_resource type="Texture2D" uid="uid://btmu0knlrbj64" path="res://Sprites/Start/start1.png" id="6_ypsd1"]
+[ext_resource type="Texture2D" uid="uid://drmdenwytl12b" path="res://Sprites/Start/start3.png" id="7_xp0kt"]
+[ext_resource type="Texture2D" uid="uid://cl2utdqkvdmba" path="res://Sprites/Start/start2.png" id="8_1yfdm"]
+[ext_resource type="Texture2D" uid="uid://b70j1vc8si7mi" path="res://Sprites/Quit/quit1.png" id="9_3h8o7"]
+[ext_resource type="Texture2D" uid="uid://byyld6eym4n2t" path="res://Sprites/Quit/quit3.png" id="10_q6o50"]
+[ext_resource type="Texture2D" uid="uid://dsrijc1o8fdbm" path="res://Sprites/Quit/quit2.png" id="11_46hhv"]
+[ext_resource type="Texture2D" uid="uid://ma61puti7leu" path="res://Sprites/Back/back1.png" id="13_1yfdm"]
+[ext_resource type="Texture2D" uid="uid://p11uh2rmbc8b" path="res://Sprites/Back/back3.png" id="14_3h8o7"]
+[ext_resource type="Texture2D" uid="uid://ln14ubaqbyqe" path="res://Sprites/Back/back2.png" id="15_q6o50"]
+[ext_resource type="AudioStream" uid="uid://ljfyomtmxtun" path="res://Sounds/Music/You Win!.mp3" id="16_1yfdm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2xx2"]
+shader = ExtResource("1_5wsvm")
+shader_parameter/alpha_strength = 1.0
+
+[sub_resource type="Gradient" id="Gradient_h7ojb"]
+colors = PackedColorArray(0.21176471, 0, 0.74509805, 0.6745098, 0.16014901, 0.00011147082, 0.50602484, 0.54901963)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wqpeb"]
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o14dv"]
+noise = SubResource("FastNoiseLite_wqpeb")
+color_ramp = SubResource("Gradient_h7ojb")
+seamless = true
+
+[node name="Main Menu" type="CanvasLayer" unique_id=1054244270]
+script = ExtResource("1_xp0kt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1119125581]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7306596, 0.52585965, 1, 1)
+
+[node name="Background" type="TextureRect" parent="ColorRect" unique_id=25759894]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_i2xx2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_o14dv")
+flip_h = true
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=803047466]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_right = 315.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 50
+text = "It's not a bug, it's a feature"
+
+[node name="Label2" type="Label" parent="ColorRect" unique_id=907674515]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 50
+text = "Controls are in options"
+horizontal_alignment = 2
+
+[node name="Title" type="Control" parent="." unique_id=188306698]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Title" type="Sprite2D" parent="Title" unique_id=144789387]
+scale = Vector2(6, 6)
+texture = ExtResource("3_3h8o7")
+centered = false
+offset = Vector2(-64, 0)
+
+[node name="Quit Button" type="TextureButton" parent="." unique_id=1351694263]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -92.0
+offset_right = 12.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(8, 8)
+pivot_offset = Vector2(12, 6)
+texture_normal = ExtResource("9_3h8o7")
+texture_pressed = ExtResource("10_q6o50")
+texture_hover = ExtResource("11_46hhv")
+
+[node name="Start" type="TextureButton" parent="." unique_id=645950119]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 64)
+texture_normal = ExtResource("6_ypsd1")
+texture_pressed = ExtResource("7_xp0kt")
+texture_hover = ExtResource("8_1yfdm")
+
+[node name="Options" type="TextureButton" parent="." unique_id=960794535]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = 256.0
+offset_right = 15.5
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+pivot_offset = Vector2(15.5, 5)
+texture_normal = ExtResource("3_jewm6")
+texture_pressed = ExtResource("4_cejvf")
+texture_hover = ExtResource("5_ru8vt")
+
+[node name="Options Menu" type="ColorRect" parent="." unique_id=1706642785]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.007843138, 0, 0.08627451, 0.8784314)
+
+[node name="Back" type="Control" parent="Options Menu" unique_id=519037985]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Back" type="TextureButton" parent="Options Menu/Back" unique_id=436656752]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 80.0
+offset_right = 16.0
+offset_bottom = 112.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(16, 6)
+texture_normal = ExtResource("13_1yfdm")
+texture_pressed = ExtResource("14_3h8o7")
+texture_hover = ExtResource("15_q6o50")
+
+[node name="Sliders" type="Control" parent="Options Menu" unique_id=368159630]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VolSlider" type="HSlider" parent="Options Menu/Sliders" unique_id=1904973762]
+layout_mode = 0
+offset_left = -342.0
+offset_top = 124.58
+offset_right = 350.0
+offset_bottom = 140.58
+max_value = 1.0
+step = 0.01
+
+[node name="Volume" type="Label" parent="Options Menu/Sliders" unique_id=2060091055]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 20.0
+offset_right = 85.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(105, 43.5)
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 80
+text = "Volume:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="Label" parent="Options Menu" unique_id=327525476]
+layout_mode = 1
+offset_left = 8.0
+offset_right = 388.0
+offset_bottom = 626.0
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 30
+text = "Controls:
+
+2D Platformer:
+- Walk - A,D, Left Arrow, Right Arrow
+- Jump - W, Up Arrow, Space
+
+3D Platformer:
+- Walk - WASD
+- Jump - Space
+
+Top Down Shooter:
+- Walk - WASD
+- Shoot - Left Click
+
+Rhythm Game:
+- Hit Note - Arrow Keys
+"
+
+[node name="Instructions" type="Label" parent="Options Menu" unique_id=1189499228]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -442.0
+offset_right = -8.0
+offset_bottom = 626.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 30
+text = "Tips:
+
+Platformers:
+
+- You have a double jump
+-Jump on Sproings' heads to kill them
+-Dont Touch Spikes
+
+Top Down Shooter:
+
+-Shoot the Buggies to get XP
+- Get 100% XP to level up
+-You win after level 3
+
+Rhythm Game:
+- Hit the notes with the arrow key shown
+"
+horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=103340119]
+stream = ExtResource("16_1yfdm")
+autoplay = true
+
+[connection signal="pressed" from="Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Options Menu/Back/Back" to="." method="_on_back_pressed"]

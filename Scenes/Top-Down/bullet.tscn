@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://bk2mengvjfjkc"]
+
+[ext_resource type="Script" uid="uid://bovlyslbwgm7g" path="res://Scripts/bullet.gd" id="1_xjght"]
+[ext_resource type="Texture2D" uid="uid://dlbnaicmka4tc" path="res://Sprites/Explod-ezgif.com-reverse.png" id="2_omevv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4mw4s"]
+radius = 0.2
+height = 0.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjght"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture_force_srgb = true
+metallic = 1.0
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0.72664744, 0.6186378, 0.20653597, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oduel"]
+material = SubResource("StandardMaterial3D_xjght")
+radius = 0.15
+height = 0.75
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htxto"]
+atlas = ExtResource("2_omevv")
+region = Rect2(1600, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss1wf"]
+atlas = ExtResource("2_omevv")
+region = Rect2(1800, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6ml7"]
+atlas = ExtResource("2_omevv")
+region = Rect2(2000, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcs73"]
+atlas = ExtResource("2_omevv")
+region = Rect2(2200, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc3jv"]
+atlas = ExtResource("2_omevv")
+region = Rect2(2400, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avihy"]
+atlas = ExtResource("2_omevv")
+region = Rect2(2600, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp3gh"]
+atlas = ExtResource("2_omevv")
+region = Rect2(2800, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl50p"]
+atlas = ExtResource("2_omevv")
+region = Rect2(3000, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmpbr"]
+atlas = ExtResource("2_omevv")
+region = Rect2(3200, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7exs7"]
+atlas = ExtResource("2_omevv")
+region = Rect2(0, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2tw8"]
+atlas = ExtResource("2_omevv")
+region = Rect2(200, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0hgb"]
+atlas = ExtResource("2_omevv")
+region = Rect2(400, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi3ts"]
+atlas = ExtResource("2_omevv")
+region = Rect2(600, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0886y"]
+atlas = ExtResource("2_omevv")
+region = Rect2(800, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vshib"]
+atlas = ExtResource("2_omevv")
+region = Rect2(1000, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08vqt"]
+atlas = ExtResource("2_omevv")
+region = Rect2(1200, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt0n0"]
+atlas = ExtResource("2_omevv")
+region = Rect2(1400, 0, 200, 282)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_omevv"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htxto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss1wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6ml7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcs73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc3jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avihy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp3gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl50p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmpbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7exs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2tw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0hgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi3ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0886y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vshib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08vqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt0n0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"boom",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="CharacterBody3D" unique_id=1297976184]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xjght")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2132608095]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4mw4s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=84923623]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_oduel")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1267335408]
+light_color = Color(0.7254902, 0.61960787, 0.20784314, 1)
+light_volumetric_fog_energy = 2.5
+light_size = 8.015
+omni_range = 10.0
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=159176083]
+aabb = AABB(-25, -25, -25, 50, 50, 50)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1279775474]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=820824440]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4mw4s")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="." unique_id=1008995239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+modulate = Color(1, 1, 1, 0.48235294)
+axis = 1
+shaded = true
+double_sided = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_omevv")
+animation = &"boom"
+speed_scale = 5.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D" unique_id=1421401135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+light_color = Color(0.6858746, 0.29337564, 0, 1)
+light_energy = 6.0
+light_volumetric_fog_energy = 2.5
+omni_range = 1.5
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

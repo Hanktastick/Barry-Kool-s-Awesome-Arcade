@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://dodlbrwhjj4dl"]
+
+[ext_resource type="PackedScene" uid="uid://ckiymfc31bfhh" path="res://Scenes/Rhythm/bg.tscn" id="1_q2dty"]
+[ext_resource type="Script" uid="uid://bbuhne32w4n41" path="res://Scenes/fake_barry.gd" id="1_tx0nc"]
+[ext_resource type="Texture2D" uid="uid://c33hxklysspuf" path="res://Sprites/the_line_2.0-sheet.png" id="2_kqn1q"]
+[ext_resource type="PackedScene" uid="uid://qnitmplocsnf" path="res://Scenes/Rhythm/buttons.tscn" id="3_0phmt"]
+[ext_resource type="PackedScene" uid="uid://de8m3slyvg3y2" path="res://Scenes/UI/text_engine.tscn" id="5_kgabw"]
+[ext_resource type="Texture2D" uid="uid://dy52mfg8frwdi" path="res://Sprites/barry kool.png" id="6_wpquk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjvhh"]
+atlas = ExtResource("2_kqn1q")
+region = Rect2(0, 0, 1072, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx0nc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjvhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c62xx"]
+atlas = ExtResource("6_wpquk")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2tsf"]
+atlas = ExtResource("6_wpquk")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymcyf"]
+atlas = ExtResource("6_wpquk")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6h0o"]
+atlas = ExtResource("6_wpquk")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hojvx"]
+atlas = ExtResource("6_wpquk")
+region = Rect2(128, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrmp7"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_c62xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2tsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymcyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6h0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hojvx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Fake Barry" type="Node2D" unique_id=724626188]
+script = ExtResource("1_tx0nc")
+
+[node name="bg" parent="." unique_id=685328677 instance=ExtResource("1_q2dty")]
+position = Vector2(-1312, -1052)
+
+[node name="horizontal_line" type="AnimatedSprite2D" parent="." unique_id=882667481]
+modulate = Color(0.73333335, 1, 0, 1)
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_tx0nc")
+
+[node name="vertical_line" type="AnimatedSprite2D" parent="." unique_id=253092521]
+modulate = Color(0.73333335, 1, 0, 1)
+texture_filter = 1
+rotation = 1.5707964
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_tx0nc")
+
+[node name="Buttons" parent="." unique_id=659428978 instance=ExtResource("3_0phmt")]
+modulate = Color(1, 0, 0.016666412, 1)
+
+[node name="Text Engine" parent="." unique_id=1950898565 instance=ExtResource("5_kgabw")]
+
+[node name="The Big B Himself" type="AnimatedSprite2D" parent="." unique_id=1926220]
+position = Vector2(2423, -400)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_vrmp7")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1697540718]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1422716883]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

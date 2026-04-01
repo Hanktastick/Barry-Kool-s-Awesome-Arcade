@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://lw3e7bnqbfml"]
+
+[ext_resource type="Script" uid="uid://c5yw317131bhd" path="res://Scripts/top_down_player.gd" id="1_a4ic7"]
+[ext_resource type="AudioStream" uid="uid://dtyvlri70wg3m" path="res://Sounds/Music/Pandemonium.mp3" id="2_c4sju"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ic7"]
+albedo_color = Color(0, 0.31817532, 0.47305012, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xqcaa"]
+material = SubResource("StandardMaterial3D_a4ic7")
+height = 3.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a4ic7"]
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6w1ba"]
+albedo_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s333s"]
+material = SubResource("StandardMaterial3D_6w1ba")
+radius = 0.52
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s333s"]
+albedo_color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_epxvj"]
+material = SubResource("StandardMaterial3D_s333s")
+
+[node name="Top Down Player" type="CharacterBody3D" unique_id=1556868357 groups=["Player"]]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_a4ic7")
+
+[node name="Gun Point" type="Node3D" parent="." unique_id=1994469680]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -2.1855694e-08, 2.1855694e-08, -1.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=29617606]
+mesh = SubResource("CapsuleMesh_xqcaa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=533478504]
+shape = SubResource("CapsuleShape3D_a4ic7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=224108234]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 15, 0)
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+spot_range = 4096.0
+spot_attenuation = 0.25
+spot_angle = 27.5
+
+[node name="Shoot Timer" type="Timer" parent="." unique_id=965126566]
+one_shot = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1652840679]
+transform = Transform3D(0.003561276, 0.00036309668, -0.9999937, -0.44704697, 0.89450973, -0.0012672357, 0.8945034, 0.44704854, 0.0033479226, 0, 1.332, 0.22530231)
+mesh = SubResource("SphereMesh_s333s")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1008240780]
+follow_viewport_enabled = true
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2" unique_id=583904023]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6502.0
+offset_top = -4935.0
+offset_right = 5320.0
+offset_bottom = 3521.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.39748234, 5.5350364e-07, 1.6845763e-07, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=766114502]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.060183585, -0.8564366)
+mesh = SubResource("BoxMesh_epxvj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1151490205]
+stream = ExtResource("2_c4sju")
+volume_db = -20.0
+autoplay = true

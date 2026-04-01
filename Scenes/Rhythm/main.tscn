@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://g8ndlojiqdd5"]
+
+[ext_resource type="Script" uid="uid://blwnsg6aoercy" path="res://Scripts/main.gd" id="1_kry3j"]
+[ext_resource type="FontFile" uid="uid://bxwh85p56ogo1" path="res://Scripts/Jersey10-Regular.ttf" id="3_i1q6u"]
+[ext_resource type="AudioStream" uid="uid://bvxx48k2dajuu" path="res://Sounds/Music/candy.mp3" id="4_kry3j"]
+[ext_resource type="Shader" path="res://Scripts/main.gdshader" id="5_21xkr"]
+[ext_resource type="AudioStream" uid="uid://dmax3hb80oh42" path="res://Sounds/Music/Race me (2).mp3" id="5_kry3j"]
+[ext_resource type="AudioStream" uid="uid://bpkrkimfk8qcu" path="res://Sounds/Music/Barry Kools Theme No Loop.mp3" id="6_i1q6u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bp64"]
+shader = ExtResource("5_21xkr")
+shader_parameter/strength = 0.02
+shader_parameter/samples = 8
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/tint_color = Color(1, 0.5, 0.5, 1)
+shader_parameter/tint_strength = 0.5
+shader_parameter/vignette_radius = 0.6
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/vignette_strength = 1.0
+shader_parameter/screen_size = Vector2(0, 0)
+
+[node name="Main" type="Node2D" unique_id=1533915766]
+script = ExtResource("1_kry3j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1852676183]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=807215978]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer" unique_id=2142247047]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/TextureRect" unique_id=210463707]
+modulate = Color(1, 0.5, 1, 1)
+top_level = true
+layout_mode = 1
+offset_right = 664.0
+offset_bottom = 219.0
+theme_override_fonts/font = ExtResource("3_i1q6u")
+theme_override_font_sizes/font_size = 150
+text = "Now Playing:
+ Candy ~ MXSounds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1402286450]
+material = SubResource("ShaderMaterial_6bp64")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=16132634]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1118065828]
+autostart = true
+ignore_time_scale = true
+
+[node name="race_me" type="AudioStreamPlayer" parent="." unique_id=154852296]
+stream = ExtResource("5_kry3j")
+
+[node name="candy" type="AudioStreamPlayer" parent="." unique_id=1600491491]
+stream = ExtResource("4_kry3j")
+
+[node name="barry" type="AudioStreamPlayer" parent="." unique_id=1815119393]
+stream = ExtResource("6_i1q6u")
+
+[node name="song_start_delay" type="Timer" parent="." unique_id=1015506422]
+wait_time = 3.214
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="race_me" to="." method="_on_race_me_finished"]
+[connection signal="finished" from="candy" to="." method="_on_candy_finished"]
+[connection signal="finished" from="barry" to="." method="_on_barry_finished"]
+[connection signal="timeout" from="song_start_delay" to="." method="_on_song_start_delay_timeout"]

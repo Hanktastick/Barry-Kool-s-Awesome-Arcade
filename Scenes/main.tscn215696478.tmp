@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://y0gxingmlsjt"]
+
+[ext_resource type="PackedScene" uid="uid://ckiymfc31bfhh" path="res://Scenes/bg.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://blwnsg6aoercy" path="res://Scripts/main.gd" id="1_kry3j"]
+[ext_resource type="Texture2D" uid="uid://c33hxklysspuf" path="res://Assets/Images/the_line_2.0-sheet.png" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://qnitmplocsnf" path="res://Scenes/buttons.tscn" id="4_kry3j"]
+[ext_resource type="Shader" uid="uid://dis3xj6lt68cr" path="res://Scenes/main.gdshader" id="5_21xkr"]
+[ext_resource type="AudioStream" uid="uid://dmax3hb80oh42" path="res://Assets/Sounds/Race me (2).mp3" id="5_kry3j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjvhh"]
+atlas = ExtResource("2_jjvhh")
+region = Rect2(0, 0, 1072, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kry3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjvhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bp64"]
+shader = ExtResource("5_21xkr")
+shader_parameter/strength = 0.02
+shader_parameter/samples = 8
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/tint_color = Color(1, 0.5, 0.5, 1)
+shader_parameter/tint_strength = 0.5
+
+[node name="Main" type="Node2D" unique_id=1533915766]
+position = Vector2(10, 0)
+script = ExtResource("1_kry3j")
+
+[node name="bg" parent="." unique_id=685328677 instance=ExtResource("1_jjgbg")]
+position = Vector2(37, 25)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1852676183]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=807215978]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer" unique_id=2142247047]
+layout_mode = 2
+
+[node name="horizontal_line" type="AnimatedSprite2D" parent="CanvasLayer/CenterContainer/TextureRect" unique_id=776862981]
+texture_filter = 1
+position = Vector2(0.333313, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_kry3j")
+
+[node name="vertical_line" type="AnimatedSprite2D" parent="CanvasLayer/CenterContainer/TextureRect" unique_id=1709875916]
+texture_filter = 1
+position = Vector2(0.333313, 0)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_kry3j")
+
+[node name="Buttons" parent="CanvasLayer/CenterContainer/TextureRect" unique_id=659428978 instance=ExtResource("4_kry3j")]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1402286450]
+material = SubResource("ShaderMaterial_6bp64")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1118065828]
+autostart = true
+ignore_time_scale = true
+
+[node name="song1" type="AudioStreamPlayer2D" parent="." unique_id=1227213575]
+position = Vector2(-10, 0)
+stream = ExtResource("5_kry3j")
+
+[node name="song_start_delay" type="Timer" parent="." unique_id=1617666879]
+wait_time = 3.214
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="song_start_delay" to="." method="_on_song_start_delay_timeout"]

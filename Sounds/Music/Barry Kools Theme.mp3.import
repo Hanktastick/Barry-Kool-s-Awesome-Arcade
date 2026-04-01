@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckfv0pev0rmjb"
+path="res://.godot/imported/Barry Kools Theme.mp3-67f68d91f67a02db86f8f305e3442658.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Barry Kools Theme.mp3"
+dest_files=["res://.godot/imported/Barry Kools Theme.mp3-67f68d91f67a02db86f8f305e3442658.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

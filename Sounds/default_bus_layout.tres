@@ -1,0 +1,10 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://5cfcw660hqut"]
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j2f15"]
+resource_name = "Distortion"
+pre_gain = -25.0
+drive = 0.4
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectDistortion_j2f15")
+bus/0/effect/0/enabled = false

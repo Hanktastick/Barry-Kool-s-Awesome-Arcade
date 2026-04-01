@@ -1,0 +1,279 @@
+[gd_scene format=3 uid="uid://d1nxkno6do8bu"]
+
+[ext_resource type="Script" uid="uid://capgrkxtjoecl" path="res://Scripts/intro.gd" id="1_lf7w2"]
+[ext_resource type="PackedScene" uid="uid://dk3e775p64kft" path="res://Scenes/3D Platformer/3d_player.tscn" id="1_q3lyo"]
+[ext_resource type="Texture2D" uid="uid://cv7hmtgf3d67k" path="res://Sprites/E.png" id="2_dom76"]
+[ext_resource type="Texture2D" uid="uid://b4bpvb71whuj0" path="res://Models/Textures/Door_0.png" id="3_ge85j"]
+[ext_resource type="ArrayMesh" uid="uid://c2owuyfjqh37n" path="res://Models/Tiles/Door.obj" id="4_3xktm"]
+[ext_resource type="PackedScene" uid="uid://d365arfhcpmfr" path="res://Models/Arcade.glb" id="5_ujhu8"]
+[ext_resource type="PackedScene" uid="uid://dpgjussa0ciwt" path="res://Models/Arcade Cabinet.glb" id="6_ujhu8"]
+[ext_resource type="PackedScene" uid="uid://buob2g2exqi2p" path="res://Models/Racing Aracade Machine.glb" id="7_dom76"]
+[ext_resource type="PackedScene" uid="uid://de8m3slyvg3y2" path="res://Scenes/UI/text_engine.tscn" id="9_dvfyk"]
+[ext_resource type="AudioStream" uid="uid://ljfyomtmxtun" path="res://Sounds/Music/You Win!.mp3" id="10_g6crn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ujhu8"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+energy_multiplier = 128.0
+
+[sub_resource type="Sky" id="Sky_dom76"]
+sky_material = SubResource("ProceduralSkyMaterial_ujhu8")
+
+[sub_resource type="Environment" id="Environment_aq62n"]
+background_mode = 1
+sky = SubResource("Sky_dom76")
+fog_light_color = Color(0.5176471, 0.5529412, 0.60784316, 1)
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.23753911, 0.23753914, 0.23753911, 1)
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ge85j"]
+
+[sub_resource type="Gradient" id="Gradient_ujhu8"]
+colors = PackedColorArray(0, 0, 0, 1, 0.09130811, 2.404131e-05, 0.36497974, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dom76"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dvfyk"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_dom76")
+color_ramp = SubResource("Gradient_ujhu8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6crn"]
+albedo_texture = SubResource("NoiseTexture2D_dvfyk")
+normal_texture = SubResource("NoiseTexture2D_dvfyk")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3xktm"]
+material = SubResource("StandardMaterial3D_g6crn")
+size = Vector3(33, 0.1, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ujhu8"]
+material = SubResource("StandardMaterial3D_g6crn")
+size = Vector3(500, 0.1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3lyo"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvfyk"]
+size = Vector3(22, 8.25, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dom76"]
+albedo_texture = ExtResource("3_ge85j")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dom76"]
+height = 20.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ujhu8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvfyk"]
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dom76"]
+size = Vector3(1.0634766, 3.2666626, 1.142395)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dvfyk"]
+data = PackedVector3Array(-7.6875, 3.1248999, 4.9999, -7.6875, -2.125, 5.1247997, -7.6875, 3.1248999, 5.1247997, -7.6875, 3.1248999, 4.9999, -7.6875, -2.125, 4.9999, -7.6875, -2.125, 5.1247997, -7.9377, -2.125, 5.1247997, -7.9377, 3.1248999, 4.9999, -7.9377, 3.1248999, 5.1247997, -7.9377, -2.125, 5.1247997, -7.9377, -2.125, 4.9999, -7.9377, 3.1248999, 4.9999, -7.9377, 3.1248999, 5.1247997, -7.6875, 3.1248999, 4.9999, -7.6875, 3.1248999, 5.1247997, -7.9377, 3.1248999, 5.1247997, -7.9377, 3.1248999, 4.9999, -7.6875, 3.1248999, 4.9999, -7.6875, -2.125, 4.9999, -7.9377, -2.125, 5.1247997, -7.6875, -2.125, 5.1247997, -7.6875, -2.125, 4.9999, -7.9377, -2.125, 4.9999, -7.9377, -2.125, 5.1247997, -7.6875, -2.125, 5.1247997, -7.9377, 3.1248999, 5.1247997, -7.6875, 3.1248999, 5.1247997, -7.6875, -2.125, 5.1247997, -7.9377, -2.125, 5.1247997, -7.9377, 3.1248999, 5.1247997, -7.9377, 3.1248999, 4.9999, -7.6875, -2.125, 4.9999, -7.6875, 3.1248999, 4.9999, -7.9377, 3.1248999, 4.9999, -7.9377, -2.125, 4.9999, -7.6875, -2.125, 4.9999, -7.6875, 5.7499, -5.6253, -23.5625, -2.125, -5.6253, -23.5625, 5.7499, -5.6253, -7.6875, 5.7499, -5.6253, -7.6875, -2.125, -5.6253, -23.5625, -2.125, -5.6253, -23.5625, -2.125, -5.875, -7.6875, 5.7499, -5.875, -23.5625, 5.7499, -5.875, -23.5625, -2.125, -5.875, -7.6875, -2.125, -5.875, -7.6875, 5.7499, -5.875, -23.5625, 5.7499, -5.875, -7.6875, 5.7499, -5.6253, -23.5625, 5.7499, -5.6253, -23.5625, 5.7499, -5.875, -7.6875, 5.7499, -5.875, -7.6875, 5.7499, -5.6253, -7.6875, -2.125, -5.6253, -23.5625, -2.125, -5.875, -23.5625, -2.125, -5.6253, -7.6875, -2.125, -5.6253, -7.6875, -2.125, -5.875, -23.5625, -2.125, -5.875, -23.5625, -2.125, -5.6253, -23.5625, 5.7499, -5.875, -23.5625, 5.7499, -5.6253, -23.5625, -2.125, -5.6253, -23.5625, -2.125, -5.875, -23.5625, 5.7499, -5.875, -7.6875, 5.7499, -5.875, -7.6875, -2.125, -5.6253, -7.6875, 5.7499, -5.6253, -7.6875, 5.7499, -5.875, -7.6875, -2.125, -5.875, -7.6875, -2.125, -5.6253, -7.6875, 5.7499, -5.875, -7.6875, 3.1248999, 16, -7.6875, 5.7499, 16, -7.6875, 5.7499, -5.875, -7.6875, 3.1248999, -5.875, -7.6875, 3.1248999, 16, -7.9377, 3.1248999, 16, -7.9377, 5.7499, -5.875, -7.9377, 5.7499, 16, -7.9377, 3.1248999, 16, -7.9377, 3.1248999, -5.875, -7.9377, 5.7499, -5.875, -7.9377, 5.7499, 16, -7.6875, 5.7499, -5.875, -7.6875, 5.7499, 16, -7.9377, 5.7499, 16, -7.9377, 5.7499, -5.875, -7.6875, 5.7499, -5.875, -7.6875, 3.1248999, -5.875, -7.9377, 3.1248999, 16, -7.6875, 3.1248999, 16, -7.6875, 3.1248999, -5.875, -7.9377, 3.1248999, -5.875, -7.9377, 3.1248999, 16, -7.6875, 3.1248999, 16, -7.9377, 5.7499, 16, -7.6875, 5.7499, 16, -7.6875, 3.1248999, 16, -7.9377, 3.1248999, 16, -7.9377, 5.7499, 16, -7.9377, 5.7499, -5.875, -7.6875, 3.1248999, -5.875, -7.6875, 5.7499, -5.875, -7.9377, 5.7499, -5.875, -7.9377, 3.1248999, -5.875, -7.6875, 3.1248999, -5.875, -7.6875, -0.62509996, -5.875, -7.6875, -2.125, 2.875, -7.6875, -0.62509996, 2.875, -7.6875, -0.62509996, -5.875, -7.6875, -2.125, -5.875, -7.6875, -2.125, 2.875, -7.9377, -2.125, 2.875, -7.9377, -0.62509996, -5.875, -7.9377, -0.62509996, 2.875, -7.9377, -2.125, 2.875, -7.9377, -2.125, -5.875, -7.9377, -0.62509996, -5.875, -7.9377, -0.62509996, 2.875, -7.6875, -0.62509996, -5.875, -7.6875, -0.62509996, 2.875, -7.9377, -0.62509996, 2.875, -7.9377, -0.62509996, -5.875, -7.6875, -0.62509996, -5.875, -7.6875, -2.125, -5.875, -7.9377, -2.125, 2.875, -7.6875, -2.125, 2.875, -7.6875, -2.125, -5.875, -7.9377, -2.125, -5.875, -7.9377, -2.125, 2.875, -7.6875, -2.125, 2.875, -7.9377, -0.62509996, 2.875, -7.6875, -0.62509996, 2.875, -7.6875, -2.125, 2.875, -7.9377, -2.125, 2.875, -7.9377, -0.62509996, 2.875, -7.9377, -0.62509996, -5.875, -7.6875, -2.125, -5.875, -7.6875, -0.62509996, -5.875, -7.9377, -0.62509996, -5.875, -7.9377, -2.125, -5.875, -7.6875, -2.125, -5.875, -7.6875, 3.1248999, 1.3749, -7.6875, -0.62509996, 2.875, -7.6875, 3.1248999, 2.875, -7.6875, 3.1248999, 1.3749, -7.6875, -0.62509996, 1.3749, -7.6875, -0.62509996, 2.875, -7.9377, -0.62509996, 2.875, -7.9377, 3.1248999, 1.3749, -7.9377, 3.1248999, 2.875, -7.9377, -0.62509996, 2.875, -7.9377, -0.62509996, 1.3749, -7.9377, 3.1248999, 1.3749, -7.9377, 3.1248999, 2.875, -7.6875, 3.1248999, 1.3749, -7.6875, 3.1248999, 2.875, -7.9377, 3.1248999, 2.875, -7.9377, 3.1248999, 1.3749, -7.6875, 3.1248999, 1.3749, -7.6875, -0.62509996, 1.3749, -7.9377, -0.62509996, 2.875, -7.6875, -0.62509996, 2.875, -7.6875, -0.62509996, 1.3749, -7.9377, -0.62509996, 1.3749, -7.9377, -0.62509996, 2.875, -7.6875, -0.62509996, 2.875, -7.9377, 3.1248999, 2.875, -7.6875, 3.1248999, 2.875, -7.6875, -0.62509996, 2.875, -7.9377, -0.62509996, 2.875, -7.9377, 3.1248999, 2.875, -7.9377, 3.1248999, 1.3749, -7.6875, -0.62509996, 1.3749, -7.6875, 3.1248999, 1.3749, -7.9377, 3.1248999, 1.3749, -7.9377, -0.62509996, 1.3749, -7.6875, -0.62509996, 1.3749, -7.6875, 3.1248999, 7.25, -7.6875, -0.62509996, 8.7497, -7.6875, 3.1248999, 8.7497, -7.6875, 3.1248999, 7.25, -7.6875, -0.62509996, 7.25, -7.6875, -0.62509996, 8.7497, -7.9377, -0.62509996, 8.7497, -7.9377, 3.1248999, 7.25, -7.9377, 3.1248999, 8.7497, -7.9377, -0.62509996, 8.7497, -7.9377, -0.62509996, 7.25, -7.9377, 3.1248999, 7.25, -7.9377, 3.1248999, 8.7497, -7.6875, 3.1248999, 7.25, -7.6875, 3.1248999, 8.7497, -7.9377, 3.1248999, 8.7497, -7.9377, 3.1248999, 7.25, -7.6875, 3.1248999, 7.25, -7.6875, -0.62509996, 7.25, -7.9377, -0.62509996, 8.7497, -7.6875, -0.62509996, 8.7497, -7.6875, -0.62509996, 7.25, -7.9377, -0.62509996, 7.25, -7.9377, -0.62509996, 8.7497, -7.6875, -0.62509996, 8.7497, -7.9377, 3.1248999, 8.7497, -7.6875, 3.1248999, 8.7497, -7.6875, -0.62509996, 8.7497, -7.9377, -0.62509996, 8.7497, -7.9377, 3.1248999, 8.7497, -7.9377, 3.1248999, 7.25, -7.6875, -0.62509996, 7.25, -7.6875, 3.1248999, 7.25, -7.9377, 3.1248999, 7.25, -7.9377, -0.62509996, 7.25, -7.6875, -0.62509996, 7.25, -7.6875, -0.62509996, 7.25, -7.6875, -2.125, 16, -7.6875, -0.62509996, 16, -7.6875, -0.62509996, 7.25, -7.6875, -2.125, 7.25, -7.6875, -2.125, 16, -7.9377, -2.125, 16, -7.9377, -0.62509996, 7.25, -7.9377, -0.62509996, 16, -7.9377, -2.125, 16, -7.9377, -2.125, 7.25, -7.9377, -0.62509996, 7.25, -7.9377, -0.62509996, 16, -7.6875, -0.62509996, 7.25, -7.6875, -0.62509996, 16, -7.9377, -0.62509996, 16, -7.9377, -0.62509996, 7.25, -7.6875, -0.62509996, 7.25, -7.6875, -2.125, 7.25, -7.9377, -2.125, 16, -7.6875, -2.125, 16, -7.6875, -2.125, 7.25, -7.9377, -2.125, 7.25, -7.9377, -2.125, 16, -7.6875, -2.125, 16, -7.9377, -0.62509996, 16, -7.6875, -0.62509996, 16, -7.6875, -2.125, 16, -7.9377, -2.125, 16, -7.9377, -0.62509996, 16, -7.9377, -0.62509996, 7.25, -7.6875, -2.125, 7.25, -7.6875, -0.62509996, 7.25, -7.9377, -0.62509996, 7.25, -7.9377, -2.125, 7.25, -7.6875, -2.125, 7.25, -7.6875, 5.7499, 16, -23.5625, -2.125, 16, -23.5625, 5.7499, 16, -7.6875, 5.7499, 16, -7.6875, -2.125, 16, -23.5625, -2.125, 16, -23.5625, -2.125, 15.75, -7.6875, 5.7499, 15.75, -23.5625, 5.7499, 15.75, -23.5625, -2.125, 15.75, -7.6875, -2.125, 15.75, -7.6875, 5.7499, 15.75, -23.5625, 5.7499, 15.75, -7.6875, 5.7499, 16, -23.5625, 5.7499, 16, -23.5625, 5.7499, 15.75, -7.6875, 5.7499, 15.75, -7.6875, 5.7499, 16, -7.6875, -2.125, 16, -23.5625, -2.125, 15.75, -23.5625, -2.125, 16, -7.6875, -2.125, 16, -7.6875, -2.125, 15.75, -23.5625, -2.125, 15.75, -23.5625, -2.125, 16, -23.5625, 5.7499, 15.75, -23.5625, 5.7499, 16, -23.5625, -2.125, 16, -23.5625, -2.125, 15.75, -23.5625, 5.7499, 15.75, -7.6875, 5.7499, 15.75, -7.6875, -2.125, 16, -7.6875, 5.7499, 16, -7.6875, 5.7499, 15.75, -7.6875, -2.125, 15.75, -7.6875, -2.125, 16, -7.6875, 6.25, -5.875, -7.6875, 5.7499, 16, -7.6875, 6.25, 16, -7.6875, 6.25, -5.875, -7.6875, 5.7499, -5.875, -7.6875, 5.7499, 16, -23.5625, 5.7499, 16, -23.5625, 6.25, -5.875, -23.5625, 6.25, 16, -23.5625, 5.7499, 16, -23.5625, 5.7499, -5.875, -23.5625, 6.25, -5.875, -23.5625, 6.25, 16, -7.6875, 6.25, -5.875, -7.6875, 6.25, 16, -23.5625, 6.25, 16, -23.5625, 6.25, -5.875, -7.6875, 6.25, -5.875, -7.6875, 5.7499, -5.875, -23.5625, 5.7499, 16, -7.6875, 5.7499, 16, -7.6875, 5.7499, -5.875, -23.5625, 5.7499, -5.875, -23.5625, 5.7499, 16, -7.6875, 5.7499, 16, -23.5625, 6.25, 16, -7.6875, 6.25, 16, -7.6875, 5.7499, 16, -23.5625, 5.7499, 16, -23.5625, 6.25, 16, -23.5625, 6.25, -5.875, -7.6875, 5.7499, -5.875, -7.6875, 6.25, -5.875, -23.5625, 6.25, -5.875, -23.5625, 5.7499, -5.875, -7.6875, 5.7499, -5.875, -23.3125, 5.7499, -5.875, -23.3125, -2.125, 16, -23.3125, 5.7499, 16, -23.3125, 5.7499, -5.875, -23.3125, -2.125, -5.875, -23.3125, -2.125, 16, -23.5625, -2.125, 16, -23.5625, 5.7499, -5.875, -23.5625, 5.7499, 16, -23.5625, -2.125, 16, -23.5625, -2.125, -5.875, -23.5625, 5.7499, -5.875, -23.5625, 5.7499, 16, -23.3125, 5.7499, -5.875, -23.3125, 5.7499, 16, -23.5625, 5.7499, 16, -23.5625, 5.7499, -5.875, -23.3125, 5.7499, -5.875, -23.3125, -2.125, -5.875, -23.5625, -2.125, 16, -23.3125, -2.125, 16, -23.3125, -2.125, -5.875, -23.5625, -2.125, -5.875, -23.5625, -2.125, 16, -23.3125, -2.125, 16, -23.5625, 5.7499, 16, -23.3125, 5.7499, 16, -23.3125, -2.125, 16, -23.5625, -2.125, 16, -23.5625, 5.7499, 16, -23.5625, 5.7499, -5.875, -23.3125, -2.125, -5.875, -23.3125, 5.7499, -5.875, -23.5625, 5.7499, -5.875, -23.5625, -2.125, -5.875, -23.3125, -2.125, -5.875)
+
+[node name="3d_intro" type="Node3D" unique_id=2026410381]
+script = ExtResource("1_lf7w2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1794256687]
+environment = SubResource("Environment_aq62n")
+camera_attributes = SubResource("CameraAttributesPhysical_ge85j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=258506817]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="TextureRect" parent="CanvasLayer" unique_id=440210358]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -98.0
+offset_right = 98.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dom76")
+stretch_mode = 4
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=286317533]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6502.0
+offset_top = -4935.0
+offset_right = 5320.0
+offset_bottom = 3521.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="3d_player" parent="." unique_id=1604952341 instance=ExtResource("1_q3lyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.305, -10.75)
+rotation_order = 0
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=2003780089]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=184436890]
+mesh = SubResource("BoxMesh_3xktm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor" unique_id=94834178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("BoxMesh_ujhu8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=113846449]
+visible = false
+shape = SubResource("BoxShape3D_q3lyo")
+
+[node name="Arcade" type="StaticBody3D" parent="." unique_id=1195870352]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Wall2" type="CollisionShape3D" parent="Arcade" unique_id=420437621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00471735, 4.192196, -7.734462)
+shape = SubResource("BoxShape3D_dvfyk")
+debug_color = Color(0.23513556, 0.62935644, 0, 1)
+
+[node name="Door" type="MeshInstance3D" parent="Arcade" unique_id=1864754226]
+material_override = SubResource("StandardMaterial3D_dom76")
+transparency = 0.75
+cast_shadow = 0
+mesh = ExtResource("4_3xktm")
+
+[node name="Building" parent="Arcade" unique_id=203918230 instance=ExtResource("5_ujhu8")]
+
+[node name="Rando Light1" type="OmniLight3D" parent="Arcade" unique_id=1675802340]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 30.120611, 7.85, -37.47218)
+light_color = Color(0.6, 0.55200005, 0.312, 1)
+light_energy = 33.955
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+omni_range = 4096.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arcade/Rando Light1" unique_id=1298934437]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -10.642037)
+mesh = SubResource("CapsuleMesh_dom76")
+
+[node name="Screen" type="MeshInstance3D" parent="Arcade" unique_id=1314767816]
+transform = Transform3D(0.79033744, 0, 0, 0, -2.9140926e-08, 0.7752053, 0, -0.6666667, -3.3885293e-08, -0.015472949, 2.9420142, 6.8481197)
+mesh = SubResource("PlaneMesh_ujhu8")
+surface_material_override/0 = SubResource("StandardMaterial3D_dvfyk")
+
+[node name="Arcade Machine Light" type="OmniLight3D" parent="Arcade" unique_id=197390246]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.038085, 6.7953596)
+light_energy = 2.5
+light_volumetric_fog_energy = 8.728
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 19.302
+
+[node name="Machines" type="Node3D" parent="Arcade" unique_id=2028744154]
+
+[node name="Generic Machine1" parent="Arcade/Machines" unique_id=253650336 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, 5, 0, -5)
+
+[node name="Generic Machine2" parent="Arcade/Machines" unique_id=1025169705 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, 6.25, 0, -5)
+
+[node name="Generic Machine5" parent="Arcade/Machines" unique_id=650313063 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, 5, 0, -2)
+
+[node name="Generic Machine6" parent="Arcade/Machines" unique_id=1765660370 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, 6.25, 0, -2)
+
+[node name="Generic Machine7" parent="Arcade/Machines" unique_id=1337721755 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, 5, 0, -0.5)
+
+[node name="Generic Machine8" parent="Arcade/Machines" unique_id=1509322625 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, 6.25, 0, -0.5)
+
+[node name="Generic Machine9" parent="Arcade/Machines" unique_id=1696293568 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, 5, 0, 1)
+
+[node name="Generic Machine10" parent="Arcade/Machines" unique_id=1136181803 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, 6.25, 0, 1)
+
+[node name="Generic Machine11" parent="Arcade/Machines" unique_id=1307479227 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, 5, 0, 2.5)
+
+[node name="Generic Machine12" parent="Arcade/Machines" unique_id=369642124 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, 6.25, 0, 2.5)
+
+[node name="Generic Machine3" parent="Arcade/Machines" unique_id=1580645539 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, 6.25, 0, -3.5)
+
+[node name="Generic Machine4" parent="Arcade/Machines" unique_id=951468524 instance=ExtResource("7_dom76")]
+transform = Transform3D(-5.8281852e-08, 0, 1.3333333, 0, 1.3333334, 0, -1.3333333, 0, -5.8281852e-08, 5, 0, -3.5)
+
+[node name="Generic Machine13" parent="Arcade/Machines" unique_id=1692204497 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, -6.25, 0, -5)
+
+[node name="Generic Machine14" parent="Arcade/Machines" unique_id=1010772846 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, -5, 0, -5)
+
+[node name="Generic Machine15" parent="Arcade/Machines" unique_id=1180122353 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, -6.25, 0, -2)
+
+[node name="Generic Machine16" parent="Arcade/Machines" unique_id=1697629247 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, -5, 0, -2)
+
+[node name="Generic Machine17" parent="Arcade/Machines" unique_id=561710522 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, -6.25, 0, -0.5)
+
+[node name="Generic Machine18" parent="Arcade/Machines" unique_id=1887329831 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, -5, 0, -0.5)
+
+[node name="Generic Machine19" parent="Arcade/Machines" unique_id=624611580 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, -6.25, 0, 1)
+
+[node name="Generic Machine20" parent="Arcade/Machines" unique_id=1753703328 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, -5, 0, 1)
+
+[node name="Generic Machine21" parent="Arcade/Machines" unique_id=921675956 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, 1.3333335, 0, 1.3333334, 0, -1.3333335, 0, -5.8281863e-08, -6.25, 0, 2.5)
+
+[node name="Generic Machine22" parent="Arcade/Machines" unique_id=332353382 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, -5, 0, 2.5)
+
+[node name="Generic Machine23" parent="Arcade/Machines" unique_id=1808123320 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(-5.8281863e-08, 0, -1.3333335, 0, 1.3333334, 0, 1.3333335, 0, -5.8281863e-08, -5, 0, -3.5)
+
+[node name="Generic Machine24" parent="Arcade/Machines" unique_id=1473542002 instance=ExtResource("7_dom76")]
+transform = Transform3D(-5.8281852e-08, 0, 1.3333333, 0, 1.3333334, 0, -1.3333333, 0, -5.8281852e-08, -6.25, 0, -3.5)
+
+[node name="Arcade Machine Main" parent="Arcade" unique_id=1148879509 instance=ExtResource("6_ujhu8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.033333335, 6.9763985)
+
+[node name="Area3D" type="Area3D" parent="Arcade/Arcade Machine Main" unique_id=93957232]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arcade/Arcade Machine Main/Area3D" unique_id=1408670633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1333313, -0.07119751)
+shape = SubResource("BoxShape3D_dom76")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arcade" unique_id=2053223735]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.0625, 2.125, -15.625)
+shape = SubResource("ConcavePolygonShape3D_dvfyk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1944087654]
+transform = Transform3D(-0.9760613, 0, -0.21749584, -0.14830127, 0.73148465, 0.66553515, 0.15909487, 0.68185794, -0.7139738, 0, 87.353195, -69.49333)
+light_color = Color(0.112035714, 0.4783737, 0.5701926, 1)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="Text Engine" parent="." unique_id=1950898565 instance=ExtResource("9_dvfyk")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1868805008]
+stream = ExtResource("10_g6crn")
+volume_db = -10.0
+pitch_scale = 0.25
+autoplay = true
+
+[connection signal="body_entered" from="Arcade/Arcade Machine Main/Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ckiymfc31bfhh"]
+
+[ext_resource type="Shader" path="res://Scripts/Stars_1.gdshader" id="1_ha8nf"]
+[ext_resource type="Texture2D" uid="uid://cdocrfx25lx8n" path="res://Sprites/rhythm_bg.png" id="1_t4gw0"]
+[ext_resource type="Shader" path="res://Scripts/Stars_2.gdshader" id="3_3hex7"]
+[ext_resource type="Texture2D" uid="uid://fkprxakmptbc" path="res://Sprites/rhythm_bg-sheet.png" id="3_ha8nf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hex7"]
+shader = ExtResource("1_ha8nf")
+shader_parameter/alpha_strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ha8nf"]
+shader = ExtResource("3_3hex7")
+shader_parameter/alpha_strength = 1.0
+
+[node name="bg" type="Node2D" unique_id=685328677]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=253520547]
+offset_left = -1388.0
+offset_top = -772.0
+offset_right = 3408.0
+offset_bottom = 2759.0
+color = Color(0.023529412, 0.023529412, 0.03137255, 1)
+
+[node name="BG1" type="TextureRect" parent="." unique_id=1667736090]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3hex7")
+offset_left = -1385.0
+offset_top = -786.0
+offset_right = 203.65198
+offset_bottom = 487.66675
+scale = Vector2(3.004434, 3)
+texture = ExtResource("1_t4gw0")
+stretch_mode = 1
+
+[node name="BG2" type="TextureRect" parent="." unique_id=1003749205]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ha8nf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1374.0001
+offset_top = -819.0
+offset_right = 215.98328
+offset_bottom = 540.3334
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.004434, 3)
+texture = ExtResource("3_ha8nf")
+stretch_mode = 1
+flip_h = true
+flip_v = true

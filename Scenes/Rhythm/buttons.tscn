@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://qnitmplocsnf"]
+
+[ext_resource type="Script" uid="uid://82ejtikmnpbi" path="res://Scripts/buttons.gd" id="1_dc2ao"]
+[ext_resource type="Texture2D" uid="uid://dgaar8qbhrwy7" path="res://Assets/Images/click_button-sheet.png" id="2_dc2ao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g606t"]
+atlas = ExtResource("2_dc2ao")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kh5i"]
+atlas = ExtResource("2_dc2ao")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aik8"]
+atlas = ExtResource("2_dc2ao")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y0rg"]
+atlas = ExtResource("2_dc2ao")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6m5g"]
+atlas = ExtResource("2_dc2ao")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh7w3"]
+atlas = ExtResource("2_dc2ao")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1pts8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g606t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kh5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aik8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y0rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6m5g")
+}],
+"loop": false,
+"name": &"click",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh7w3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dc2ao"]
+radius = 50.0
+
+[node name="Buttons" type="Node2D" unique_id=659428978]
+script = ExtResource("1_dc2ao")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1186294766]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1pts8")
+animation = &"click"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1825356206]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1743418650]
+shape = SubResource("CircleShape2D_dc2ao")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

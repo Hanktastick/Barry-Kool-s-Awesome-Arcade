@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cbfe43tgsomww"]
+
+[ext_resource type="PackedScene" uid="uid://ckiymfc31bfhh" path="res://Scenes/Rhythm/bg.tscn" id="1_lafy6"]
+[ext_resource type="Texture2D" uid="uid://c33hxklysspuf" path="res://Sprites/the_line_2.0-sheet.png" id="2_lwmc6"]
+[ext_resource type="PackedScene" uid="uid://qnitmplocsnf" path="res://Scenes/Rhythm/buttons.tscn" id="3_h6qli"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjvhh"]
+atlas = ExtResource("2_lwmc6")
+region = Rect2(0, 0, 1072, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgq8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjvhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="candy_song" type="Node2D" unique_id=512029398]
+
+[node name="bg" parent="." unique_id=685328677 instance=ExtResource("1_lafy6")]
+position = Vector2(-913, -515)
+
+[node name="horizontal_line" type="AnimatedSprite2D" parent="." unique_id=1151762934]
+modulate = Color(1, 0, 0.916667, 1)
+texture_filter = 1
+position = Vector2(0.333313, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hgq8c")
+
+[node name="vertical_line" type="AnimatedSprite2D" parent="." unique_id=951766600]
+modulate = Color(1, 0, 0.91764706, 1)
+texture_filter = 1
+position = Vector2(0.333313, 0)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hgq8c")
+
+[node name="Buttons" parent="." unique_id=659428978 instance=ExtResource("3_h6qli")]
+modulate = Color(1, 0.45999998, 0.6400001, 1)

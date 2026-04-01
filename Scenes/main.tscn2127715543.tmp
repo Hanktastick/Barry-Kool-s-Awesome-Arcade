@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://y0gxingmlsjt"]
+
+[ext_resource type="Script" uid="uid://blwnsg6aoercy" path="res://Scripts/main.gd" id="1_kry3j"]
+[ext_resource type="Shader" uid="uid://dis3xj6lt68cr" path="res://Scenes/main.gdshader" id="5_21xkr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bp64"]
+shader = ExtResource("5_21xkr")
+shader_parameter/strength = 0.02
+shader_parameter/samples = 8
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/tint_color = Color(1, 0.5, 0.5, 1)
+shader_parameter/tint_strength = 0.5
+shader_parameter/vignette_radius = 0.6
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/vignette_strength = 1.0
+shader_parameter/screen_size = Vector2(0, 0)
+
+[node name="Main" type="Node2D" unique_id=1533915766]
+position = Vector2(10, 0)
+script = ExtResource("1_kry3j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1852676183]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=807215978]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer" unique_id=2142247047]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1402286450]
+material = SubResource("ShaderMaterial_6bp64")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=16132634]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1118065828]
+autostart = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cnjteqbm466v1"]
+
+[ext_resource type="Script" uid="uid://be2vwlhtfciqw" path="res://Scripts/spike.gd" id="1_nhwc1"]
+[ext_resource type="Texture2D" uid="uid://dx2mf51gr2055" path="res://Sprites/BoxSpike.png" id="2_cdwon"]
+
+[node name="Upside Down Spike" type="StaticBody2D" unique_id=21684665]
+rotation = 3.1415927
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_nhwc1")
+
+[node name="BoxSpike" type="Sprite2D" parent="." unique_id=491993614]
+texture = ExtResource("2_cdwon")
+
+[node name="HurtBox" type="Area2D" parent="BoxSpike" unique_id=1521538067]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BoxSpike/HurtBox" unique_id=512367804]
+position = Vector2(0, 3)
+polygon = PackedVector2Array(8, 5, 1, -11, -1, -11, -8, 5)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=660305087]
+position = Vector2(0, 3)
+polygon = PackedVector2Array(8, 5, 1, -11, -1, -11, -8, 5)
+
+[connection signal="body_entered" from="BoxSpike/HurtBox" to="." method="_on_hurt_box_body_entered"]

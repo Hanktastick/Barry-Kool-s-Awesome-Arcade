@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://dugd81hfah78x"]
+
+[ext_resource type="Script" uid="uid://ct86ab2sjvchl" path="res://Scripts/pause_menu.gd" id="1_l0wpn"]
+[ext_resource type="Shader" uid="uid://cpj35l57dk663" path="res://Scripts/menuBG.gdshader" id="2_k6cgp"]
+[ext_resource type="Texture2D" uid="uid://koou5vbye3b3" path="res://Sprites/paused.png" id="3_6xmaw"]
+[ext_resource type="Texture2D" uid="uid://drnxru4rfor6" path="res://Sprites/Options/options_button1.png" id="4_olo8q"]
+[ext_resource type="Texture2D" uid="uid://dm76q1clitast" path="res://Sprites/Options/options_button3.png" id="5_3x8nh"]
+[ext_resource type="Texture2D" uid="uid://i7qtbua0s0ni" path="res://Sprites/Options/options_button2.png" id="6_somet"]
+[ext_resource type="Texture2D" uid="uid://5wi5jovd21pi" path="res://Sprites/Resume/resume_button1.png" id="7_bfkko"]
+[ext_resource type="Texture2D" uid="uid://otcfwrumut0e" path="res://Sprites/Resume/resume_button3.png" id="8_hmhu2"]
+[ext_resource type="Texture2D" uid="uid://ccdp7hqe164ce" path="res://Sprites/Resume/resume_button2.png" id="9_p60fi"]
+[ext_resource type="Texture2D" uid="uid://b70j1vc8si7mi" path="res://Sprites/Quit/quit1.png" id="10_aio2j"]
+[ext_resource type="Texture2D" uid="uid://byyld6eym4n2t" path="res://Sprites/Quit/quit3.png" id="11_oli7j"]
+[ext_resource type="Texture2D" uid="uid://dsrijc1o8fdbm" path="res://Sprites/Quit/quit2.png" id="12_ctlxi"]
+[ext_resource type="Texture2D" uid="uid://ma61puti7leu" path="res://Sprites/Back/back1.png" id="13_nd1n0"]
+[ext_resource type="Texture2D" uid="uid://p11uh2rmbc8b" path="res://Sprites/Back/back3.png" id="14_ygvb6"]
+[ext_resource type="Texture2D" uid="uid://ln14ubaqbyqe" path="res://Sprites/Back/back2.png" id="15_wgkso"]
+[ext_resource type="FontFile" uid="uid://bxwh85p56ogo1" path="res://Scripts/Jersey10-Regular.ttf" id="16_xxxtj"]
+[ext_resource type="AudioStream" uid="uid://dnll25x62d8d7" path="res://Sounds/SFX/button_hover.wav" id="17_syy4y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ymcx"]
+shader = ExtResource("2_k6cgp")
+shader_parameter/alpha_strength = 1.0
+
+[sub_resource type="Gradient" id="Gradient_taale"]
+colors = PackedColorArray(0.19063148, 0.00023573238, 0.2831698, 0.627451, 0.09458739, 0.00013563847, 0.19720644, 0.54901963)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q7fiq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tekra"]
+noise = SubResource("FastNoiseLite_q7fiq")
+color_ramp = SubResource("Gradient_taale")
+seamless = true
+
+[node name="Pause Menu" type="CanvasLayer" unique_id=1796132069]
+layer = 2
+script = ExtResource("1_l0wpn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1785618696]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1ymcx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_tekra")
+
+[node name="Paused" type="Control" parent="Background" unique_id=1390425902]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused" type="Sprite2D" parent="Background/Paused" unique_id=701796943]
+scale = Vector2(8, 8)
+texture = ExtResource("3_6xmaw")
+offset = Vector2(0, -40)
+
+[node name="Buttons" type="Control" parent="Background" unique_id=492776104]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="TextureButton" parent="Background/Buttons" unique_id=43931703]
+layout_mode = 0
+offset_left = -15.5
+offset_top = 90.0
+offset_right = 15.5
+offset_bottom = 100.00003
+scale = Vector2(6, 6)
+pivot_offset = Vector2(15.5, 5)
+texture_normal = ExtResource("4_olo8q")
+texture_pressed = ExtResource("5_3x8nh")
+texture_hover = ExtResource("6_somet")
+
+[node name="Resume" type="TextureButton" parent="Background/Buttons" unique_id=37073738]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -90.0
+offset_right = 16.0
+offset_bottom = -78.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(16, 6)
+texture_normal = ExtResource("7_bfkko")
+texture_pressed = ExtResource("8_hmhu2")
+texture_hover = ExtResource("9_p60fi")
+
+[node name="Quit Button" type="TextureButton" parent="Background/Buttons" unique_id=1517042570]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 270.0
+offset_right = 12.000002
+offset_bottom = 282.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(12, 6)
+texture_normal = ExtResource("10_aio2j")
+texture_pressed = ExtResource("11_oli7j")
+texture_hover = ExtResource("12_ctlxi")
+
+[node name="Options Menu" type="ColorRect" parent="Background" unique_id=1433537930]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.007843138, 0, 0.08627451, 0.8784314)
+
+[node name="Back" type="Control" parent="Background/Options Menu" unique_id=392068266]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Back" type="TextureButton" parent="Background/Options Menu/Back" unique_id=1733007332]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 80.0
+offset_right = 16.0
+offset_bottom = 112.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(16, 6)
+texture_normal = ExtResource("13_nd1n0")
+texture_pressed = ExtResource("14_ygvb6")
+texture_hover = ExtResource("15_wgkso")
+
+[node name="Sliders" type="Control" parent="Background/Options Menu" unique_id=1606105421]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VolSlider" type="HSlider" parent="Background/Options Menu/Sliders" unique_id=1205719569]
+layout_mode = 0
+offset_left = -342.0
+offset_top = 124.58
+offset_right = 350.0
+offset_bottom = 140.58
+max_value = 1.0
+step = 0.01
+
+[node name="Volume" type="Label" parent="Background/Options Menu/Sliders" unique_id=224206193]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 20.0
+offset_right = 85.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(105, 43.5)
+theme_override_fonts/font = ExtResource("16_xxxtj")
+theme_override_font_sizes/font_size = 80
+text = "Volume:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=712534791]
+stream = ExtResource("17_syy4y")
+
+[connection signal="pressed" from="Background/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Background/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Background/Buttons/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Background/Options Menu/Back/Back" to="." method="_on_back_pressed"]
+[connection signal="drag_ended" from="Background/Options Menu/Sliders/VolSlider" to="." method="_on_vol_slider_drag_ended"]
